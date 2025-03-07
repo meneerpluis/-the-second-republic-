@@ -101,8 +101,8 @@ Q.moderate_plan_adopted = 0;
 // organizations
 
 // inter-party relations
-Q.z_relation = 50;
-Q.PCE_relation = 25;
+Q.z_relation = 60;
+Q.PCE_relation = 50;
 Q.PRRS_relation = 60;
 Q.dvp_relation = 35;
 // DNVP and NSDAP are invariably hostile
@@ -594,11 +594,11 @@ For more information on the politics and government of the German Republic, see 
 - @1928_historical: Begin (historical mode)
 
 @1928_easy
-on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 2500; PCE_relation = 29; z_relation = 54; dvp_relation = 49; budget = 5;
+on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 10; PCE_relation = 50; z_relation = 60; dvp_relation = 40; budget = 5;
 go-to: 1928_main
 
 @1928_hard
-on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 1000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; PCE_relation = 16; dvp_relation = 31; budget = 3;
+on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 5; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; PCE_relation = 16; dvp_relation = 31; budget = 3;
 go-to: 1928_main
 
 @1928_historical
@@ -613,9 +613,9 @@ Q.reformist_dissent = 25;
 Q.left_dissent = 30;
 Q.labor_dissent = 25;
 Q.center_dissent = 25;
-Q.z_relation = 41;
-Q.PCE_relation = 16;
-Q.dvp_relation = 31;
+Q.z_relation = 51;
+Q.PCE_relation = 41;
+Q.dvp_relation = 41;
 Q.budget = 2;
 this.state.disableSaves = true;
 !}
