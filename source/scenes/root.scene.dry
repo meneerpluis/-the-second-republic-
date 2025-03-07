@@ -233,59 +233,59 @@ Q.sapd_formed = 0;
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
-Q.workers_PSOE = 60;
-Q.workers_PCE = 20;
-Q.workers_z = 5;
-Q.workers_PRRS = 0;
+Q.workers_PSOE = 50;
+Q.workers_PCE = 4;
+Q.workers_z = 8;
+Q.workers_PRRS = 8;
 Q.workers_dvp = 0;
 Q.workers_dnvp = 5;
-Q.workers_nsdap = 0;
-Q.workers_other = 10;
+Q.workers_nsdap = 5;
+Q.workers_other = 20;
 
 Q.old_middle_PSOE = 5;
 Q.old_middle_PCE = 0;
 Q.old_middle_z = 5;
 Q.old_middle_PRRS= 10;
-Q.old_middle_dvp = 25;
+Q.old_middle_dvp = 30;
 Q.old_middle_dnvp = 25;
-Q.old_middle_nsdap = 10;
-Q.old_middle_other = 10;
+Q.old_middle_nsdap = 20;
+Q.old_middle_other = 5;
 
-Q.new_middle_PSOE = 5;
-Q.new_middle_PCE = 1;
-Q.new_middle_z = 10;
-Q.new_middle_PRRS= 25;
+Q.new_middle_PSOE = 10;
+Q.new_middle_PCE = 0;
+Q.new_middle_z = 20;
+Q.new_middle_PRRS= 20;
 Q.new_middle_dvp = 25;
 Q.new_middle_dnvp = 10;
 Q.new_middle_nsdap = 5;
-Q.new_middle_other = 15;
+Q.new_middle_other = 10;
 
-Q.rural_PSOE = 10;
+Q.rural_PSOE = 25;
 Q.rural_PCE = 0;
-Q.rural_z = 5;
-Q.rural_PRRS= 5;
-Q.rural_dvp = 15;
-Q.rural_dnvp = 45;
-Q.rural_nsdap = 5;
+Q.rural_z = 1;
+Q.rural_PRRS= 2;
+Q.rural_dvp = 42;
+Q.rural_dnvp = 5;
+Q.rural_nsdap = 15;
 Q.rural_other = 10;
 
-Q.unemployed_PSOE = 25;
-Q.unemployed_PCE = 55;
-Q.unemployed_z = 1;
+Q.unemployed_PSOE = 50;
+Q.unemployed_PCE = 5;
+Q.unemployed_z = 5;
 Q.unemployed_PRRS = 0;
 Q.unemployed_dvp = 0;
-Q.unemployed_dnvp = 5;
+Q.unemployed_dnvp = 10;
 Q.unemployed_nsdap = 15;
-Q.unemployed_other = 9;
+Q.unemployed_other = 15;
 
-Q.catholics_PSOE = 15;
-Q.catholics_PCE = 2;
-Q.catholics_z = 50;
+Q.catholics_PSOE = 5;
+Q.catholics_PCE = 0;
+Q.catholics_z = 0;
 Q.catholics_PRRS = 0;
-Q.catholics_dvp = 5;
-Q.catholics_dnvp = 5;
-Q.catholics_nsdap = 0;
-Q.catholics_other = 12;
+Q.catholics_dvp = 40;
+Q.catholics_dnvp = 20;
+Q.catholics_nsdap = 20;
+Q.catholics_other = 15;
 
 
 // Current Reichstag composition
@@ -294,14 +294,14 @@ Q.catholics_other = 12;
 // note: the Z figures also include the BVP (Bavarian people's party)
 // since they were ideologically similar, but they were separate parties.
 // They did not have a CDU/CSU-style relationship.
-Q.PSOE_r = 26;
-Q.PCE_r = 9;
-Q.z_r = 17;
-Q.PRRS_r = 6;
-Q.dvp_r = 10;
-Q.dnvp_r = 20;
-Q.nsdap_r = 3;
-Q.other_r = 9;
+Q.PSOE_r = 0;
+Q.PCE_r = 0;
+Q.z_r = 0;
+Q.PRRS_r = 0;
+Q.dvp_r = 0;
+Q.dnvp_r = 0;
+Q.nsdap_r = 0;
+Q.other_r = 0;
 
 // diff from prev
 Q.old_PSOE_r = 26;
