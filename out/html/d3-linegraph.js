@@ -19,10 +19,10 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
         parties = ['PSOE', 'PCE', 'PRRS', 'z', 'dvp', 'dnvp', 'nsdap', 'other'];
     }
     if (!partyColors) {
-        partyColors = {'PSOE': '#E3000F', 'PCE': '#8B0000', 'PRRS': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0'};
+        partyColors = {'PSOE': '#EF1C27', 'PCE': '#AC0621', 'PRRS': '#9A0DBC', 'z': '#FF7028', 'dvp': '#A871A8', 'dnvp': '#303180', 'nsdap': '#000000', 'other': '#FFB232'};
     }
     if (!partyNames) {
-        partyNames = {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': 'IR', 'z': 'UR', 'dvp': 'PRR', 'dnvp': 'CEDA', 'nsdap': 'Others Right', 'other': 'Others Left'};
+        partyNames = {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': 'IR', 'z': 'UR', 'dvp': 'PRR', 'dnvp': 'AN', 'nsdap': 'Others Right', 'other': 'Others Left'};
     }
     if (!additionalMonths) {
         additionalMonths = 10;
