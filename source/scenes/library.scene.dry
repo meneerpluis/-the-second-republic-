@@ -63,7 +63,7 @@ go-to: cabinet if PSOE_in_government; menu if not PSOE_in_government
 
 = Current Government
 
-[+ king_name =] : [+ president +]
+[+ king_name +] : [+ president +]
 
 Prime Minister: [+ chancellor +] ([+ chancellor_party +])
 
@@ -91,6 +91,8 @@ PSOE position: [? if PSOE_toleration : toleration ?][? if PSOE_in_government : i
 [? if in_weimar_coalition and PSOE_in_government: Weimar Coalition ?][? if in_grand_coalition and PSOE_in_government: Grand Coalition ?][? if in_popular_front and PSOE_in_government: Popular Front ?][? if in_left_front and PSOE_in_government: Left Front ?][? if in_PSOE_majority and PSOE_in_government: PSOE majority ?][? if in_minority_government and PSOE_in_government: minority government ?][? if in_emergency_government and PSOE_in_government: emergency government ?]
 
 [? if PSOE_in_government and not in_PSOE_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
+
+[? if PSOE_in_government and (in_left_front or in_popular_front): PCE coalition dissent: [+ PCE_coalition_dissent : coalition_dissent +] ?]
 
 @cabinet
 go-to: menu
