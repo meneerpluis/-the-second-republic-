@@ -27,7 +27,7 @@ on-arrival: advisor_action_timer = 6; resources += dues
 We have gained +[+ dues +] resources.
 
 @build_Socialist_Militants
-title: Socialist_Militants
+title: Socialist Militants
 subtitle: Schumacher supports providing more resources to the Socialist_Militants.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
