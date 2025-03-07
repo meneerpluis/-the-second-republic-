@@ -15,7 +15,7 @@ Herein contains relevant information about the government and politics of the Ge
 - @demographics: Demographics
 - @parties: Parties
 - @public_opinion: Public opinion (and projected election results)
-- @paramilitaries: Paramilitary groups
+- @paramilitaries: Militant groups
 - @factions: Internal factions
 - @figures: Figures and charts
 - @backSpecialScene: Exit library.
@@ -63,11 +63,11 @@ go-to: cabinet if PSOE_in_government; menu if not PSOE_in_government
 
 = Current Government
 
-President: [+ president +]
+[+ king_name =] : [+ president +]
 
-Chancellor: [+ chancellor +] ([+ chancellor_party +])
+Prime Minister: [+ chancellor +] ([+ chancellor_party +])
 
-Reichstag composition:
+Constituent Cortes composition:
 
 # 1928: 30, 1930: 25, 1932: 22
 PSOE: [+ PSOE_r +]%
@@ -81,11 +81,11 @@ PCE: [+ PCE_r +]%
 # 1928: 9, 1930: 5
 PRR: [+ dvp_r +]%
 # 1928: 14, 1930: 7
-CEDA: [+ dnvp_r +]%
+AN: [+ dnvp_r +]%
 # 1928: 3, 1930: 18
-RE: [+ nsdap_r +]%
+Others Right: [+ nsdap_r +]%
 # 1928: 9, 1930: 10
-Others: [+ other_r +]%
+Others Left: [+ other_r +]%
 
 PSOE position: [? if PSOE_toleration : toleration ?][? if PSOE_in_government : in government - ?][? if PSOE_toleration == 0 and PSOE_in_government == 0 and PSOE_caretaker == 0 : opposition ?][? if PSOE_caretaker : caretaker government ?]
 [? if in_weimar_coalition and PSOE_in_government: Weimar Coalition ?][? if in_grand_coalition and PSOE_in_government: Grand Coalition ?][? if in_popular_front and PSOE_in_government: Popular Front ?][? if in_left_front and PSOE_in_government: Left Front ?][? if in_PSOE_majority and PSOE_in_government: PSOE majority ?][? if in_minority_government and PSOE_in_government: minority government ?][? if in_emergency_government and PSOE_in_government: emergency government ?]
@@ -127,9 +127,9 @@ go-to: menu
 
 **New Middle Class**: The new middle class consists of white-collar workers and government employees. This is the base of left-liberalism. around 10% of the population.
 
-**Rural**: Small and large farmers and independent rural workers. Farmers often support the CEDA, but landless rural workers support the PSOE and the left more often. 40-50% of the population.
+**Rural**: Small and large farmers and independent rural workers. Farmers often support the right, but landless rural workers support the PSOE and the left more often. 40-50% of the population.
 
-**Devout Catholics** Although 98% of spain is nominal Catholic only about 40% of the population are devout Catholics. They disproportionately support CEDA and to a smaller extend the PRR.
+**Devout Catholics** Although 98% of spain is nominal Catholic only about 40% of the population are devout Catholics. They disproportionately support the right wing.
 
 
 
@@ -176,13 +176,13 @@ PCE: [+ PCE_votes +]%
 PRR: [+ dvp_votes +]%
 
 # 1928: 14, 1930: 7
-CEDA: [+ dnvp_votes +]%
+AN: [+ dnvp_votes +]%
 
 # 1928: 3, 1930: 18
-RE: [+ nsdap_votes +]%
+Others Right: [+ nsdap_votes +]%
 
 # 1928: 9, 1930: 10
-Others: [+ other_votes +]%
+Others Left: [+ other_votes +]%
 
 **Detailed results for each demographic**
 
@@ -359,6 +359,12 @@ data = data.concat([
         "seats": Q.PSOE_r*5,
     },
     {
+        "id": "other",
+        "legend": "Other Left",
+        "name": "Other Left",
+        "seats": Q.other_r*5,
+    },
+    {
         "id": "PRRS",
         "legend": "PRRS",
         "name": "PRRS",
@@ -366,31 +372,25 @@ data = data.concat([
     },
     {
         "id": "z",
-        "legend": "Center",
+        "legend": "AR",
         "name": "AR",
         "seats": Q.z_r*5,
     },
     {
         "id": "dvp",
-        "legend": "DVP",
+        "legend": "PRR",
         "name": "PRR",
         "seats": Q.dvp_r*5,
     },
     {
-        "id": "other",
-        "legend": "Other",
-        "name": "Other Left",
-        "seats": Q.other_r*5,
-    },
-    {
         "id": "dnvp",
-        "legend": "DNVP",
+        "legend": "AN",
         "name": "AN",
         "seats": Q.dnvp_r*5,
     },
     {
         "id": "nsdap",
-        "legend": "NSDAP",
+        "legend": "Other Right",
         "name": "Other Right",
         "seats": Q.nsdap_r*5,
     },
@@ -413,8 +413,8 @@ if (d3 && window) {
 
     var lines = d3.linegraph(false, false,
             Q.parties,
-            {'PSOE': '#E3000F', 'PCE': '#8B0000', 'PRRS': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
+            {'PSOE': '#EF1C27', 'PCE': '#AC0621', 'PRRS': '#9A0DBC', 'z': '#FF7028', 'dvp': '#A871A8', 'dnvp': '#303180', 'nsdap': '#000000', 'other': '#FFB232', 'sapd': '#c40000'},
+            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'AR', 'dvp': 'PRR', 'dnvp': 'AN', 'nsdap': 'Other Right', 'other': 'Other Left', 'sapd': 'SAPD'});
     lines.width(width).height(400);
     //var svg = lines(Q.election_records);
     if (Q.election_records.length > 0) {
@@ -426,8 +426,8 @@ if (d3 && window) {
     if (!Q.historical_mode || Q.game_over) {
         var lines_2 = d3.linegraph(true, true,
             Q.parties,
-            {'PSOE': '#E3000F', 'PCE': '#8B0000', 'PRRS': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
+            {'PSOE': '#EF1C27', 'PCE': '#AC0621', 'PRRS': '#9A0DBC', 'z': '#FF7028', 'dvp': '#A871A8', 'dnvp': '#303180', 'nsdap': '#000000', 'other': '#FFB232', 'sapd': '#c40000'},
+            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'AR', 'dvp': 'PRR', 'dnvp': 'AN', 'nsdap': 'Other Right', 'other': 'Other left', 'sapd': 'SAPD'});
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
@@ -449,25 +449,23 @@ if (d3 && window) {
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **PSOE:** {!</td><td>!} **[+ PSOE_r +]%** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#EF1C27; outline: 2px; outline-style: solid;'> </div></td><td>!} **PSOE:** {!</td><td>!} **[+ PSOE_r +]%** {!</td></tr>!}
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div></td> <td> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#8B0000'> </div></td> <td>!}PCE: {!</td><td>!} [+ PCE_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#FFB232'> </div></td><td>!} Other Left: {!</td><td>!} [+ other_r +] % {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div></td><td>!} [+ PRRS_name +]: {!</td><td>!} [+ PRRS_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#AC0621'> </div></td> <td>!}PCE: {!</td><td>!} [+ PCE_r +]% {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#000'> </div></td><td>!} Z: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#9A0DBC'> </div></td><td>!} [+ PRRS_name +]: {!</td><td>!} [+ PRRS_r +]% {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#69A2BE'> </div></td><td>!} BVP: {!</td><td>!} 3% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#FF7028'> </div></td><td>!} AR: {!</td><td>!} [+ z_r +]% {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#D5AC27'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#A871A8'> </div></td><td>!} PRR: {!</td><td>!} [+ dvp_r +]% {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div></td><td>!} Other parties: {!</td><td>!} [+ other_r +] % {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#303180'> </div></td><td>!} AN: {!</td><td>!} [+ dnvp_r +]% {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#3f7bc1'> </div></td><td>!} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td></tr>!}
-
-{!<tr><td><div class="box" style='background-color:#954B00'> </div></td><td>!} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#000000'> </div></td><td>!} Other Right: {!</td><td>!} [+ nsdap_r +]% {!</td></tr>!}
 {!</table>!}
 
 = Election history
