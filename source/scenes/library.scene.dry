@@ -92,8 +92,6 @@ PSOE position: [? if PSOE_toleration : toleration ?][? if PSOE_in_government : i
 
 [? if PSOE_in_government and not in_PSOE_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
 
-[? if PSOE_in_government and (in_left_front or in_popular_front): PCE coalition dissent: [+ PCE_coalition_dissent : coalition_dissent +] ?]
-
 @cabinet
 go-to: menu
 
