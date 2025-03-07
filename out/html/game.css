@@ -523,30 +523,30 @@ table {
     fill: #8B0000;
 }
 .seat.PSOE {
-    fill: #E3000F;
+    fill: #EF1C27;
     stroke: #000;
     stroke-width: 1.5px;
 }
 .seat.PRRS {
-    fill: #DCCA4A;
+    fill: #9A0DBC;
 }
 .seat.z {
-    fill: #000;
+    fill: #FF7028;
 }
 .seat.bvp {
     fill: #69A2BE;
 }
 .seat.dvp {
-    fill: #D5AC27;
+    fill: #A871A8;
 }
 .seat.other {
-    fill: #909090;
+    fill: #FFB232;
 }
 .seat.dnvp {
-    fill: #3F7BC1;
+    fill: #303180;
 }
 .seat.nsdap {
-    fill: #954B00;
+    fill: #000000;
 }
 .seat.sapd {
     fill: #C40000;
