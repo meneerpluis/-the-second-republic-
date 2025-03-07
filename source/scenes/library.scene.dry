@@ -268,7 +268,11 @@ Strength: [+ sa_strength +] thousand
 
 Militarization: [+ sa_militancy : militancy +]
 
-**Regionalist Militants**: [+ regionalists_strength +] thousand members. Many people feel more connected to their regional identity then to Spain, these militants want either more autonomy or independence for their region. These generally support the us and our republican allies as long as we respect their autonomy.
+**Regionalist Militants**: Many people feel more connected to their regional identity then to Spain, these militants want either more autonomy or independence for their region. These generally support the us and our republican allies as long as we respect their autonomy.
+
+[+ regionalists_strength +] thousand
+
+[+ regionalists_militancy +] 
 
 Loyalty: [+ regionalists_loyalty : loyalty +]
 
