@@ -59,7 +59,7 @@ go-to: menu
 **1930**: Primo de Rivera resigns, and the monarchy attempts to restore constitutional rule. The PSOE joins republican and regionalist forces in calling for the end of the monarchy.
 
 @curr_gov
-go-to: cabinet if spd_in_government; menu if not spd_in_government
+go-to: cabinet if PSOE_in_government; menu if not PSOE_in_government
 
 = Current Government
 
@@ -70,14 +70,14 @@ Chancellor: [+ chancellor +] ([+ chancellor_party +])
 Reichstag composition:
 
 # 1928: 30, 1930: 25, 1932: 22
-PSOE: [+ spd_r +]%
+PSOE: [+ PSOE_r +]%
 [? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
 # 1928: 15, 1930: 15, 1932: 
 AR: [+ z_r +]%
 # 1928: 10, 1930: 13
-PCE: [+ kpd_r +]%
-# 1928: 5, 1930: 4 (as DstP)
-[+ ddp_name +]: [+ ddp_r +]%
+PCE: [+ PCE_r +]%
+# 1928: 5, 1930: 4 (as UR)
+[+ PRRS_name +]: [+ PRRS_r +]%
 # 1928: 9, 1930: 5
 PRR: [+ dvp_r +]%
 # 1928: 14, 1930: 7
@@ -87,12 +87,12 @@ RE: [+ nsdap_r +]%
 # 1928: 9, 1930: 10
 Others: [+ other_r +]%
 
-PSOE position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
-[? if in_weimar_coalition and spd_in_government: Weimar Coalition ?][? if in_grand_coalition and spd_in_government: Grand Coalition ?][? if in_popular_front and spd_in_government: Popular Front ?][? if in_left_front and spd_in_government: Left Front ?][? if in_spd_majority and spd_in_government: SPD majority ?][? if in_minority_government and spd_in_government: minority government ?][? if in_emergency_government and spd_in_government: emergency government ?]
+PSOE position: [? if PSOE_toleration : toleration ?][? if PSOE_in_government : in government - ?][? if PSOE_toleration == 0 and PSOE_in_government == 0 and PSOE_caretaker == 0 : opposition ?][? if PSOE_caretaker : caretaker government ?]
+[? if in_weimar_coalition and PSOE_in_government: Weimar Coalition ?][? if in_grand_coalition and PSOE_in_government: Grand Coalition ?][? if in_popular_front and PSOE_in_government: Popular Front ?][? if in_left_front and PSOE_in_government: Left Front ?][? if in_PSOE_majority and PSOE_in_government: PSOE majority ?][? if in_minority_government and PSOE_in_government: minority government ?][? if in_emergency_government and PSOE_in_government: emergency government ?]
 
-[? if spd_in_government and not in_spd_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
+[? if PSOE_in_government and not in_PSOE_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
 
-[? if spd_in_government and (in_left_front or in_popular_front): KPD coalition dissent: [+ kpd_coalition_dissent : coalition_dissent +] ?]
+[? if PSOE_in_government and (in_left_front or in_popular_front): PCE coalition dissent: [+ PCE_coalition_dissent : coalition_dissent +] ?]
 
 @cabinet
 go-to: menu
@@ -159,7 +159,7 @@ go-to: menu
 **Projected election results** (if the election were to be held now):
 
 # 1928: 30, 1930: 25, 1932: 22
-PSOE: [+ spd_votes +]%
+PSOE: [+ PSOE_votes +]%
 
 [? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
 
@@ -167,10 +167,10 @@ PSOE: [+ spd_votes +]%
 AR: [+ z_votes +]%
 
 # 1928: 10, 1930: 13
-PCE: [+ kpd_votes +]%
+PCE: [+ PCE_votes +]%
 
-# 1928: 5, 1930: 4 (as DstP)
-[+ ddp_name +]: [+ ddp_votes +]%
+# 1928: 5, 1930: 4 (as UR)
+[+ PRRS_name +]: [+ PRRS_votes +]%
 
 # 1928: 9, 1930: 5
 PRR: [+ dvp_votes +]%
@@ -186,17 +186,17 @@ Others: [+ other_votes +]%
 
 **Detailed results for each demographic**
 
-Workers: PSOE: [+ workers_spd_display +]%, AR: [+ workers_z_display +]%, PCE: [+ workers_kpd_display +]%, [+ ddp_name +]: [+ workers_ddp_display +]%, PRR: [+ workers_dvp_display +]%; CEDA: [+ workers_dnvp_display +]%, RE: [+ workers_nsdap_display +]%, Others: [+ workers_other_display +]% [? if sapd_formed: SAPD: [+ workers_sapd_display +]% ?]
+Workers: PSOE: [+ workers_PSOE_display +]%, AR: [+ workers_z_display +]%, PCE: [+ workers_PCE_display +]%, [+ PRRS_name +]: [+ workers_PRRS_display +]%, PRR: [+ workers_dvp_display +]%; CEDA: [+ workers_dnvp_display +]%, RE: [+ workers_nsdap_display +]%, Others: [+ workers_other_display +]% [? if sapd_formed: SAPD: [+ workers_sapd_display +]% ?]
 
-New Middle Class: PSOE: [+ new_middle_spd_display +]%, AR: [+ new_middle_z_display +]%, PCE: [+ new_middle_kpd_display +]%, [+ ddp_name +]: [+ new_middle_ddp_display +]%, PRR: [+ new_middle_dvp_display +]%; CEDA: [+ new_middle_dnvp_display +]%, RE: [+ new_middle_nsdap_display +]%, Others: [+ new_middle_other_display +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_display +]% ?]
+New Middle Class: PSOE: [+ new_middle_PSOE_display +]%, AR: [+ new_middle_z_display +]%, PCE: [+ new_middle_PCE_display +]%, [+ PRRS_name +]: [+ new_middle_PRRS_display +]%, PRR: [+ new_middle_dvp_display +]%; CEDA: [+ new_middle_dnvp_display +]%, RE: [+ new_middle_nsdap_display +]%, Others: [+ new_middle_other_display +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_display +]% ?]
 
-Old Middle Class: PSOE: [+ old_middle_spd_display +]%, AR: [+ old_middle_z_display +]%, PCE: [+ old_middle_kpd_display +]%, [+ ddp_name +]: [+ old_middle_ddp_display +]%, PRR: [+ old_middle_dvp_display +]%; CEDA: [+ old_middle_dnvp_display +]%, RE: [+ old_middle_nsdap_display +]%, Others: [+ old_middle_other_display +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_display +]% ?]
+Old Middle Class: PSOE: [+ old_middle_PSOE_display +]%, AR: [+ old_middle_z_display +]%, PCE: [+ old_middle_PCE_display +]%, [+ PRRS_name +]: [+ old_middle_PRRS_display +]%, PRR: [+ old_middle_dvp_display +]%; CEDA: [+ old_middle_dnvp_display +]%, RE: [+ old_middle_nsdap_display +]%, Others: [+ old_middle_other_display +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_display +]% ?]
 
-Rural: PSOE: [+ rural_spd_display +]%, AR: [+ rural_z_display +]%, PCE: [+ rural_kpd_display +]%, [+ ddp_name +]: [+ rural_ddp_display +]%, PRR: [+ rural_dvp_display +]%; CEDA: [+ rural_dnvp_display +]%, RE: [+ rural_nsdap_display +]%, Others: [+ rural_other_display +]% [? if sapd_formed: SAPD: [+ rural_sapd_display +]% ?]
+Rural: PSOE: [+ rural_PSOE_display +]%, AR: [+ rural_z_display +]%, PCE: [+ rural_PCE_display +]%, [+ PRRS_name +]: [+ rural_PRRS_display +]%, PRR: [+ rural_dvp_display +]%; CEDA: [+ rural_dnvp_display +]%, RE: [+ rural_nsdap_display +]%, Others: [+ rural_other_display +]% [? if sapd_formed: SAPD: [+ rural_sapd_display +]% ?]
 
-Unemployed: PSOE: [+ unemployed_spd_display +]%, AR: [+ unemployed_z_display +]%, PCE: [+ unemployed_kpd_display +]%, [+ ddp_name +]: [+ unemployed_ddp_display +]%, PRR: [+ unemployed_dvp_display +]%; CEDA: [+ unemployed_dnvp_display +]%, RE: [+ unemployed_nsdap_display +]%, Others: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?]
+Unemployed: PSOE: [+ unemployed_PSOE_display +]%, AR: [+ unemployed_z_display +]%, PCE: [+ unemployed_PCE_display +]%, [+ PRRS_name +]: [+ unemployed_PRRS_display +]%, PRR: [+ unemployed_dvp_display +]%; CEDA: [+ unemployed_dnvp_display +]%, RE: [+ unemployed_nsdap_display +]%, Others: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?]
 
-Catholics: PSOE: [+ catholics_spd_display +]%, AR: [+ catholics_z_display +]%, PCE: [+ catholics_kpd_display +]%, [+ ddp_name +]: [+ catholics_ddp_display +]%, PRR: [+ catholics_dvp_display +]%; CEDA: [+ catholics_dnvp_display +]%, RE: [+ catholics_nsdap_display +]%, Others: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
+Catholics: PSOE: [+ catholics_PSOE_display +]%, AR: [+ catholics_z_display +]%, PCE: [+ catholics_PCE_display +]%, [+ PRRS_name +]: [+ catholics_PRRS_display +]%, PRR: [+ catholics_dvp_display +]%; CEDA: [+ catholics_dnvp_display +]%, RE: [+ catholics_nsdap_display +]%, Others: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
 
 @parties
 go-to: menu
@@ -210,7 +210,7 @@ Current relations: [+ z_relation : relationships +]
 # TODO: replace this with the german state party after 1930
 **PRRS** - *Partido Republicano Radical Socialista* (Radical Socialist Republican Party) - a left wing liberal party, supported by the progressive middle class and moderate working class people. Although not socialist they support radical reform. 
 
-Current relations: [+ ddp_relation : relationships +]
+Current relations: [+ PRRS_relation : relationships +]
 
 **PRR** - *Partido Republicano Radical* (Radical Republican Party) - a centre-right and moderate liberal party, supported by the middle classes and bourgeoisie. They support a republic, but don't support most economic reforms.
 
@@ -222,9 +222,9 @@ Current relations: [+ dnvp_relation : relationships +]
 
 **PCE** - *Partido Comunista de España* (Communist Party of Spain) - a radical left-wing offshoot of the PSOE that emerged after the PSOE refused to join the Comintern of the Soviet Union. They follow the path of Moscow and are in favor of a Soviet-style revolution.
 
-Current relations: [+ kpd_relation : relationships +]
+Current relations: [+ PCE_relation : relationships +]
 
-[? if sapd_formed: SAPD - Sozialistische Arbeiterpartei Deutschlands (Socialist Worker's Party of Germany) - a party recently formed in a split from the SPD, the SAPD is essentially an agglomeration of various left-wing splinter groups between the SPD and KPD. ?]
+[? if sapd_formed: SAPD - Sozialistische Arbeiterpartei Deutschlands (Socialist Worker's Party of Germany) - a party recently formed in a split from the PSOE, the SAPD is essentially an agglomeration of various left-wing splinter groups between the PSOE and PCE. ?]
 
 **RE** - *Renovación Española* - (Spanish Renovation) - a far-right nationalist, totalitarian and monarchist party. They are supporters of Alfonso XIII, and have deep ties within the military.
 
@@ -240,41 +240,43 @@ Q.sa_strength = Math.round(Q.sa_strength);
 !}
 go-to: menu
 
-**Paramilitary groups:**
+**Militants groups:**
 
-**The left wing masses**: Although not a organized organization the left wing of the country is highly militaint and frequently riots and fights to further the goal of a left wing republican spain.
+**Socialist Militants**: Although not a organized organization the left wing of the country is highly militaint and frequently riots and fights to further the goal of a left wing republican spain.
 
 Strength: [+ rb_strength +] thousand
 
 Militarization: [+ rb_militancy : militancy +]
 
-**Regionalist, syndicalist and anarchist militias**: Left wing militias that want increased regional autonomy and stronger labor rights.
+**Anarchist Militants**: Anarchist are anti-state leftist that seek a immediate end to all hierarchy, they often support us but they are not afraid to fight us if needed.
 
 Strength: [+ rfb_strength +] thousand
 
 Militarization: [+ rfb_militancy : militancy +]
 
-**Requeté**: A right-wing nationalist and Carlist organization of monarchist that are against the republic and for a descandent of count Don Carlos to become the spanish monarch.
+**Monarchist Militants**: Right-wing nationalist monarchists militants of both Carlists and Bourban supporters, they are against the republic and for a return of the monarchy.
 
 Strength: [+ sh_strength +] thousand
 
 Militarization: [+ sh_militancy : militancy +]
 
-**Fascist militaints**: Militaints associated with the falangist Spanish Phalanx and the national syndicalist JONS. These groups are also getting support from some in the CEDA youth wing.
+**Fascist Militants**: Militants associated with the falangist Spanish Phalanx and the national syndicalist JONS. These groups are also getting support from some in the CEDA youth wing.
 
 Strength: [+ sa_strength +] thousand
 
 Militarization: [+ sa_militancy : militancy +]
 
-**Official military/paramilitary groups:**
+**Regionalist Militants**: [+ regionalists_strength +] thousand members. Many people feel more connected to their regional identity then to Spain, these militants want either more autonomy or independence for their region. These generally support the us and our republican allies as long as we respect their autonomy.
+
+Loyalty: [+ regionalists_loyalty : loyalty +]
+
+**Official military:**
 
 **Ejército de la República Española**: [+ reichswehr_strength +] thousand troops. This is Spains military.
 
 Loyalty: [+ reichswehr_loyalty : loyalty +]
 
-**Spanish police**: [+ prussian_police_strength +] thousand members.
 
-Loyalty: [+ prussian_police_loyalty : loyalty +]
 
 
 
@@ -311,7 +313,7 @@ Dissent: [+ labor_dissent : dissent +]
 
 **Reformists**
 
-The pragmatists are pragmatic participants in government, and seek to expand the welfare state and defend the republican project. [? if spd_prussia : They are dominant in the state government of Prussia. ?]
+The pragmatists are pragmatic participants in government, and seek to expand the welfare state and defend the republican project. [? if PSOE_prussia : They are dominant in the state government of Prussia. ?]
 
 Strength: [+ reformist_strength : strength +]
 
@@ -336,10 +338,10 @@ on-arrival: z_minus_bvp_r = z_r - 3;
 on-display: {!
 data = [
     {
-        "id": "kpd",
-        "legend": "KPD",
+        "id": "PCE",
+        "legend": "PCE",
         "name": "PCE",
-        "seats": Q.kpd_r*5,
+        "seats": Q.PCE_r*5,
     }];
 if (Q.sapd_formed && Q.sapd_r) {
     data.push({
@@ -351,16 +353,16 @@ if (Q.sapd_formed && Q.sapd_r) {
 }
 data = data.concat([
     {
-        "id": "spd",
-        "legend": "SPD",
+        "id": "PSOE",
+        "legend": "PSOE",
         "name": "PSOE",
-        "seats": Q.spd_r*5,
+        "seats": Q.PSOE_r*5,
     },
     {
-        "id": "ddp",
-        "legend": "DDP",
-        "name": "PRSS",
-        "seats": Q.ddp_r*5,
+        "id": "PRRS",
+        "legend": "PRRS",
+        "name": "PRRS",
+        "seats": Q.PRRS_r*5,
     },
     {
         "id": "z",
@@ -411,8 +413,8 @@ if (d3 && window) {
 
     var lines = d3.linegraph(false, false,
             Q.parties,
-            {'spd': '#E3000F', 'kpd': '#8B0000', 'ddp': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': Q.ddp_name, 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
+            {'PSOE': '#E3000F', 'PCE': '#8B0000', 'PRRS': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
+            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
     lines.width(width).height(400);
     //var svg = lines(Q.election_records);
     if (Q.election_records.length > 0) {
@@ -424,8 +426,8 @@ if (d3 && window) {
     if (!Q.historical_mode || Q.game_over) {
         var lines_2 = d3.linegraph(true, true,
             Q.parties,
-            {'spd': '#E3000F', 'kpd': '#8B0000', 'ddp': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
-            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': Q.ddp_name, 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
+            {'PSOE': '#E3000F', 'PCE': '#8B0000', 'PRRS': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0', 'sapd': '#c40000'},
+            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD'});
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
@@ -447,13 +449,13 @@ if (d3 && window) {
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **PSOE:** {!</td><td>!} **[+ PSOE_r +]%** {!</td></tr>!}
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div></td> <td> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#8B0000'> </div></td> <td>!}KPD: {!</td><td>!} [+ kpd_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#8B0000'> </div></td> <td>!}PCE: {!</td><td>!} [+ PCE_r +]% {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div></td><td>!} [+ PRRS_name +]: {!</td><td>!} [+ PRRS_r +]% {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#000'> </div></td><td>!} Z: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!}
 

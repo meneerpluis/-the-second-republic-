@@ -20,12 +20,12 @@ if (Q.economic_growth) {
 
 Resources available: [+ resources +]
 
-PSOE position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
-[? if in_weimar_coalition and spd_in_government: Weimar Coalition ?][? if in_grand_coalition and spd_in_government: Grand Coalition ?][? if in_popular_front and spd_in_government: Popular Front ?][? if in_left_front and spd_in_government: Left Front ?][? if in_spd_majority and spd_in_government: SPD majority ?][? if in_minority_government and spd_in_government: minority government ?][? if in_emergency_government and spd_in_government: emergency government ?]
+PSOE position: [? if PSOE_toleration : toleration ?][? if PSOE_in_government : in government - ?][? if PSOE_toleration == 0 and PSOE_in_government == 0 and PSOE_caretaker == 0 : opposition ?][? if PSOE_caretaker : caretaker government ?]
+[? if in_weimar_coalition and PSOE_in_government: Weimar Coalition ?][? if in_grand_coalition and PSOE_in_government: Grand Coalition ?][? if in_popular_front and PSOE_in_government: Popular Front ?][? if in_left_front and PSOE_in_government: Left Front ?][? if in_PSOE_majority and PSOE_in_government: PSOE majority ?][? if in_minority_government and PSOE_in_government: minority government ?][? if in_emergency_government and PSOE_in_government: emergency government ?]
 
-[? if spd_in_government and not in_spd_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
+[? if PSOE_in_government and not in_PSOE_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
 
-[? if spd_in_government and (in_left_front or in_popular_front): KPD coalition dissent: [+ kpd_coalition_dissent : coalition_dissent +] ?]
+[? if PSOE_in_government and (in_left_front or in_popular_front): PCE coalition dissent: [+ PCE_coalition_dissent : coalition_dissent +] ?]
 
 Internal dissent: [+ dissent_percent : dissent +]
 
@@ -38,14 +38,14 @@ Prime Minister: [+ chancellor +] ([+ chancellor_party +])
 Reichstag composition:
 
 # 1928: 30, 1930: 25, 1932: 22
-{!<span class="tooltip-text" title="Social Democratic Party of Germany">SPD</span>!}: [+ spd_r +]%
+{!<span class="tooltip-text" title="Social Democratic Party of Germany">PSOE</span>!}: [+ PSOE_r +]%
 [? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
 # 1928: 15, 1930: 15, 1932: 
 {!<span class="tooltip-text" title="Center Party + Bavarian People's Party">Z + BVP</span>!}: [+ z_r +]%
 # 1928: 10, 1930: 13
-{!<span class="tooltip-text" title="Communist Party of Germany">KPD</span>!}: [+ kpd_r +]%
-# 1928: 5, 1930: 4 (as DstP)
-{!<span class="tooltip-text" title="German Democratic Party">!}[? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]{!</span>!}: [+ ddp_r +]%
+{!<span class="tooltip-text" title="Communist Party of Germany">PCE</span>!}: [+ PCE_r +]%
+# 1928: 5, 1930: 4 (as UR)
+{!<span class="tooltip-text" title="German Democratic Party">!}[? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]{!</span>!}: [+ PRRS_r +]%
 # 1928: 9, 1930: 5
 {!<span class="tooltip-text" title="German People's Party">DVP</span>!}: [+ dvp_r +]%
 # 1928: 14, 1930: 7
@@ -55,7 +55,7 @@ Reichstag composition:
 # 1928: 9, 1930: 10
 Others: [+ other_r +]%
 
-[? if spd_in_government = 1 : Budget: [+ budget +] ?]
+[? if PSOE_in_government = 1 : Budget: [+ budget +] ?]
 
 Next election: [+ next_election_month : month +] [+ next_election_year +]
 
@@ -78,11 +78,11 @@ Economic growth: [+ economic_growth_2 +]%
 
 {!<span class="tooltip-text" title="Center Party">Z</span>!}: [+ z_relation : relationships +]
 
-{!<span class="tooltip-text" title="German Democratic Party">!}[? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]{!</span>!}: [+ ddp_relation : relationships +]
+{!<span class="tooltip-text" title="German Democratic Party">!}[? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]{!</span>!}: [+ PRRS_relation : relationships +]
 
 {!<span class="tooltip-text" title="German People's Party">DVP</span>!}: [+ dvp_relation : relationships +]
 
-{!<span class="tooltip-text" title="Communist Party of Germany">KPD</span>!}: [+ kpd_relation : relationships +]
+{!<span class="tooltip-text" title="Communist Party of Germany">PCE</span>!}: [+ PCE_relation : relationships +]
 
 {!<span class="tooltip-text" title="German National People's Party">DNVP</span>!}: [+ dnvp_relation : relationships +]
 
@@ -117,35 +117,35 @@ if (Q.sa_strength) {
 }
 !}
 
-= Paramilitaries
+= Militant groups
 
-{!<span class="tooltip-text" title="The Reichsbanner Schwarz-Rot-Gold is a popular organization for defending democracy, mostly affiliated with the SPD.">Reichsbanner</span>!} Strength: [+ rb_strength_2 +] thousand
+{!<span class="tooltip-text" title="The socialist militants Schwarz-Rot-Gold is a popular organization for defending democracy, mostly affiliated with the PSOE.">socialist militants</span>!} Strength: [+ rb_strength_2 +] thousand
 
-Left wing masses Militarization: [+ rb_militancy : militancy +]
+Socialist Militants Militarization: [+ rb_militancy : militancy +]
 
-{!<span class="tooltip-text" title="The RFB (Rotfrontkämpferbund) is a communist group associated with the KPD.">RFB</span>!} Strength: [+ rfb_strength_2 +] thousand
+{!<span class="tooltip-text" title="Anarchist Militants are anarchist aligned with the left, but not subordinate to them.">Anarchist Militants</span>!} Strength: [+ rfb_strength_2 +] thousand
 
-Regionalist, syndicalist and anarchist militias Militarization: [+ rfb_militancy : militancy +]
+Anarchist militants Militarization: [+ rfb_militancy : militancy +]
 
-{!<span class="tooltip-text" title="The Stahlhelm is a right-wing organization of war veterans associated with the DNVP.">Stahlhelm</span>!} Strength: [+ sh_strength_2 +] thousand
+{!<span class="tooltip-text" title="Monarchist are right-wing militants that either want the return of the Carlist line or the Bourbon line.">Monarchist Militants</span>!} Strength: [+ sh_strength_2 +] thousand
 
-Requeté Militarization: [+ sh_militancy : militancy +]
+Monarchist Militants Militarization: [+ sh_militancy : militancy +]
 
-{!<span class="tooltip-text" title="The SA (Sturmabteilung) is the Nazi paramilitary.">SA</span>!} Strength: [+ sa_strength_2 +] thousand
+{!<span class="tooltip-text" title="Fascists are falangists, corporatists and national syndicalists that are hostile to socialism and democracy .">Fascist Militants</span>!} Strength: [+ sa_strength_2 +] thousand
 
-Fascist militaints Militarization: [+ sa_militancy : militancy +]
+Fascist Militants Militarization: [+ sa_militancy : militancy +]
 
-= Official military/paramilitaries
+Regionalists: [+ regionalists_strength +] thousand members.
+
+Regionalists loyalty: [+ regionalists_loyalty : loyalty +]
+
+= Official military
 
 Ejército de la República Española: [+ reichswehr_strength +] thousand troops.
 
 Ejército de la República Española Loyalty: [+ reichswehr_loyalty : loyalty +]
 
-Spanish police: [+ prussian_police_strength +] thousand members.
-
-Spanish police loyalty: [+ prussian_police_loyalty : loyalty +]
-
-[? if spd_in_government : Interior police loyalty: [+ interior_police_loyalty : loyalty +] ?]
+[? if PSOE_in_government : Interior police loyalty: [+ interior_police_loyalty : loyalty +] ?]
 
 @polls
 on-arrival: {!
@@ -158,15 +158,15 @@ Q.socialism_disp = Math.round(Q.socialism);
 
 (if the election were to be held now):
 
-PSOE: [+ spd_votes +]%
+PSOE: [+ PSOE_votes +]%
 
 [? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
 
 AR: [+ z_votes +]%
 
-PCE: [+ kpd_votes +]%
+PCE: [+ PCE_votes +]%
 
-[? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ ddp_votes +]%
+[? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ PRRS_votes +]%
 
 PRR: [+ dvp_votes +]%
 
@@ -178,16 +178,16 @@ Others: [+ other_votes +]%
 
 **Detailed results for each demographic**
 
-Workers: PSOE: [+ workers_spd_display +]%, AR: [+ workers_z_display +]%, PCE: [+ workers_kpd_display +]%, [? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ workers_ddp_display +]%, PRR: [+ workers_dvp_display +]%; CEDA: [+ workers_dnvp_display +]%, RE: [+ workers_nsdap_display +]%, Others: [+ workers_other_display +]% [? if sapd_formed: SAPD: [+ workers_sapd_display +]% ?]
+Workers: PSOE: [+ workers_PSOE_display +]%, AR: [+ workers_z_display +]%, PCE: [+ workers_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ workers_PRRS_display +]%, PRR: [+ workers_dvp_display +]%; CEDA: [+ workers_dnvp_display +]%, RE: [+ workers_nsdap_display +]%, Others: [+ workers_other_display +]% [? if sapd_formed: SAPD: [+ workers_sapd_display +]% ?]
 
-New Middle Class: PSOE: [+ new_middle_spd_display +]%, AR: [+ new_middle_z_display +]%, PCE: [+ new_middle_kpd_display +]%, [? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ new_middle_ddp_display +]%, PRR: [+ new_middle_dvp_display +]%; CEDA: [+ new_middle_dnvp_display +]%, RE: [+ new_middle_nsdap_display +]%, Others: [+ new_middle_other_display +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_display +]% ?]
+New Middle Class: PSOE: [+ new_middle_PSOE_display +]%, AR: [+ new_middle_z_display +]%, PCE: [+ new_middle_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ new_middle_PRRS_display +]%, PRR: [+ new_middle_dvp_display +]%; CEDA: [+ new_middle_dnvp_display +]%, RE: [+ new_middle_nsdap_display +]%, Others: [+ new_middle_other_display +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_display +]% ?]
 
-Old Middle Class: PSOE: [+ old_middle_spd_display +]%, AR: [+ old_middle_z_display +]%, PCE: [+ old_middle_kpd_display +]%, [? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ old_middle_ddp_display +]%, PRR: [+ old_middle_dvp_display +]%; CEDA: [+ old_middle_dnvp_display +]%, RE: [+ old_middle_nsdap_display +]%, Others: [+ old_middle_other_display +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_display +]% ?]
+Old Middle Class: PSOE: [+ old_middle_PSOE_display +]%, AR: [+ old_middle_z_display +]%, PCE: [+ old_middle_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ old_middle_PRRS_display +]%, PRR: [+ old_middle_dvp_display +]%; CEDA: [+ old_middle_dnvp_display +]%, RE: [+ old_middle_nsdap_display +]%, Others: [+ old_middle_other_display +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_display +]% ?]
 
-Rural: PSOE: [+ rural_spd_display +]%, AR: [+ rural_z_display +]%, PCE: [+ rural_kpd_display +]%, [? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ rural_ddp_display +]%, PRR: [+ rural_dvp_display +]%; CEDA: [+ rural_dnvp_display +]%, RE: [+ rural_nsdap_display +]%, Others: [+ rural_other_display +]% [? if sapd_formed: SAPD: [+ rural_sapd_display +]% ?]
+Rural: PSOE: [+ rural_PSOE_display +]%, AR: [+ rural_z_display +]%, PCE: [+ rural_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ rural_PRRS_display +]%, PRR: [+ rural_dvp_display +]%; CEDA: [+ rural_dnvp_display +]%, RE: [+ rural_nsdap_display +]%, Others: [+ rural_other_display +]% [? if sapd_formed: SAPD: [+ rural_sapd_display +]% ?]
 
-Unemployed: PSOE: [+ unemployed_spd_display +]%, AR: [+ unemployed_z_display +]%, PCE: [+ unemployed_kpd_display +]%, [? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ unemployed_ddp_display +]%, PRR: [+ unemployed_dvp_display +]%; CEDA: [+ unemployed_dnvp_display +]%, RE: [+ unemployed_nsdap_display +]%, Others: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?]
+Unemployed: PSOE: [+ unemployed_PSOE_display +]%, AR: [+ unemployed_z_display +]%, PCE: [+ unemployed_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ unemployed_PRRS_display +]%, PRR: [+ unemployed_dvp_display +]%; CEDA: [+ unemployed_dnvp_display +]%, RE: [+ unemployed_nsdap_display +]%, Others: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?]
 
-Catholics: PSOE: [+ catholics_spd_display +]%, AR: [+ catholics_z_display +]%, PCE: [+ catholics_kpd_display +]%, [? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ catholics_ddp_display +]%, PRR: [+ catholics_dvp_display +]%; CEDA: [+ catholics_dnvp_display +]%, RE: [+ catholics_nsdap_display +]%, Others: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
+Catholics: PSOE: [+ catholics_PSOE_display +]%, AR: [+ catholics_z_display +]%, PCE: [+ catholics_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ catholics_PRRS_display +]%, PRR: [+ catholics_dvp_display +]%; CEDA: [+ catholics_dnvp_display +]%, RE: [+ catholics_nsdap_display +]%, Others: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
 
 Support for the Republic: [+ pro_republic_disp +]%
