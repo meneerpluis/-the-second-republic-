@@ -24,7 +24,7 @@ The *socialist_militants Schwarz-Rot-Gold* is a mass organization for the defens
 
 #- Orient socialist_militants towards anti-fascism (only available if we have prioritized anti fascism)
 
-_militant
+@militant
 choose-if: resources >= rb_militarization_cost
 unavailable-subtitle: Not enough resources ([+ rb_militarization_cost +] needed).
 subtitle: -[+ rb_militarization_cost +] resources
