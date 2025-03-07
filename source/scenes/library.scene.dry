@@ -366,8 +366,8 @@ data = data.concat([
     },
     {
         "id": "other",
-        "legend": "Other Left",
-        "name": "Other Left",
+        "legend": "Others Left",
+        "name": "Others Left",
         "seats": Q.other_r*5,
     },
     {
@@ -396,8 +396,8 @@ data = data.concat([
     },
     {
         "id": "nsdap",
-        "legend": "Other Right",
-        "name": "Other Right",
+        "legend": "Others Right",
+        "name": "Others Right",
         "seats": Q.nsdap_r*5,
     },
 ]);
