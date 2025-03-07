@@ -504,7 +504,7 @@ Q.no_majority_elections = 0;
 Q.in_election = 1;
 Q.next_election_year = 1931;
 Q.next_election_month = 6;
-Q.next_election_time = 5;
+Q.next_election_time = 6;
 // government affairs timers
 Q.agricultural_policy_timer = 0;
 Q.domestic_enemies_timer = 0;
