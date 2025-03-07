@@ -35,7 +35,7 @@ Some in our party decry the increasing militarization of the socialist_militants
 [? if historical_mode : The Center Party decries the militarization of the socialist_militants, and its members are leaving the republican organization. ?]
 
 
-_militant_2
+@militant_2
 view-if: funded_socialist_militants >= 1
 on-arrival: rb_militancy += 0.02; funded_socialist_militants -= 1
 
