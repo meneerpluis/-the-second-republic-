@@ -13,14 +13,14 @@ face-image: img/hindenburg_election.jpg
 @pres_election
 
 Now that the elections are over parliament should vote for a President. 
-[? if sapd_formed: The SAPD, our former leftists, are supporting Thälmann of the KPD, and will likely share an endorsement with the Communists. ?]
+[? if sapd_formed: The SAPD, our former leftists, are supporting Thälmann of the PCE, and will likely share an endorsement with the Communists. ?]
 
 # if hitler is deported, who would nsdap run? Duesterberg? or Goering?
 # Goering runs, essentially as a proxy for Hitler, who is now stateless.
 
 Many are calling for us to support conservative republican Niceto Alcalá-Zamora, despite him being a conservative, he is a moderate and supports the republic. On the other hand, many in our party are calling for Manuel Azaña a left-liberal and fierce anti-clerical republican.
 
-[? if kpd_relation >= 50 : Another strange possibilty is an united front with the Communists, either to support Thälmann or our own candidate. ?]
+[? if PCE_relation >= 50 : Another strange possibilty is an united front with the Communists, either to support Thälmann or our own candidate. ?]
 
 
 - @support_hindenburg: Support Niceto Alcalá-Zamora.
@@ -52,7 +52,7 @@ The Republican Action will likely support us. Who else will? Can we convince the
 - @final_election: The final vote...
 
 @convince_z
-choose-if: spd_votes >= z_votes
+choose-if: PSOE_votes >= z_votes
 unavailable-subtitle: The Center knows that they are more popular than us; they do not see a reason to support our candidate.
 on-arrival: {!
 Q.z_support_braun = 0;
@@ -135,20 +135,20 @@ Q.hindenburg_votes += Q.other_normalized;
 Q.hindenburg_votes += Q.dnvp_normalized;
 
 if (Q.braun_campaign) {
-    Q.braun_votes += Q.spd_normalized;
-    Q.braun_votes += Q.ddp_normalized;
+    Q.braun_votes += Q.PSOE_normalized;
+    Q.braun_votes += Q.PRRS_normalized;
     if (Q.z_support_braun && Q.z_support_braun == 1) {
         Q.braun_votes += Q.z_normalized;
     } else {
         Q.hindenburg_votes += Q.z_normalized;
     }
-    if (Q.kpd_support_braun) {
-        Q.braun_votes += Q.kpd_normalized;
+    if (Q.PCE_support_braun) {
+        Q.braun_votes += Q.PCE_normalized;
         if (Q.sapd_formed && Q.sapd_votes) {
             Q.braun_votes += Q.sapd_normalized;
         }
     } else {
-        Q.thalmann_votes += Q.kpd_normalized;
+        Q.thalmann_votes += Q.PCE_normalized;
         if (Q.sapd_formed && Q.sapd_votes) {
             Q.thalmann_votes += Q.sapd_normalized;
         }
@@ -158,18 +158,18 @@ if (Q.braun_campaign) {
     } else {
         Q.hindenburg_votes += Q.dvp_normalized;
     }
-} else if (Q.spd_support_thalmann) {
-    Q.thalmann_votes += Q.kpd_normalized;
-    Q.thalmann_votes += Q.spd_normalized;
+} else if (Q.PSOE_support_thalmann) {
+    Q.thalmann_votes += Q.PCE_normalized;
+    Q.thalmann_votes += Q.PSOE_normalized;
     Q.hindenburg_votes += Q.z_normalized;
-    Q.hindenburg_votes += Q.ddp_normalized;
+    Q.hindenburg_votes += Q.PRRS_normalized;
     Q.hindenburg_votes += Q.dvp_normalized;
 } else {
-    Q.hindenburg_votes += Q.spd_normalized;
+    Q.hindenburg_votes += Q.PSOE_normalized;
     Q.hindenburg_votes += Q.z_normalized;
-    Q.hindenburg_votes += Q.ddp_normalized;
+    Q.hindenburg_votes += Q.PRRS_normalized;
     Q.hindenburg_votes += Q.dvp_normalized;
-    Q.thalmann_votes += Q.kpd_normalized;
+    Q.thalmann_votes += Q.PCE_normalized;
 }
 if (Q.hitler_support_hindenburg) {
     Q.hitler_votes -= Q.nsdap_normalized;
@@ -239,7 +239,7 @@ There is no majority in this round. In the second round, any candidate who wins 
 
 @round2_convince_z
 view-if: braun_campaign > 0 and z_support_braun != 1 
-choose-if: spd_votes >= z_votes
+choose-if: PSOE_votes >= z_votes
 unavailable-subtitle: The Center knows that they are more popular than us; they do not see a reason to support our candidate.
 on-arrival: {!
 Q.z_support_braun = 0;
@@ -301,8 +301,8 @@ Unfortunately, we fail to turn them away from Niceto Alcalá-Zamora. [? if hinde
 - @round2_vote: Let the second round voting begin.
 
 @round2_hindenburg
-view-if: braun_campaign > 0 or spd_support_thalmann > 0
-on-arrival: braun_campaign = 0; spd_support_thalmann = 0
+view-if: braun_campaign > 0 or PSOE_support_thalmann > 0
+on-arrival: braun_campaign = 0; PSOE_support_thalmann = 0
 
 We have switched our support to Niceto Alcalá-Zamora.
 
@@ -322,9 +322,9 @@ on-arrival: president = "Hindenburg"
 As expected Niceto Alcalá-Zamora wins the presidency. Let's hope he continues to keep the right out of power.
 
 @thalmann_wins
-on-arrival: president = "Thälmann"; kpd_relation = 80;
+on-arrival: president = "Thälmann"; PCE_relation = 80;
 
-Ernst Thälmann of the KPD has won the presidency. Immediately, the far-right launches a coup attempt against the government. We have no choice but to unite with the KPD against the fascists...
+Ernst Thälmann of the PCE has won the presidency. Immediately, the far-right launches a coup attempt against the government. We have no choice but to unite with the PCE against the fascists...
 
 - @civil_war: This is civil war.
 
@@ -338,6 +338,6 @@ on-arrival: president = nsdap_candidate; chancellor = "Hitler"; chancellor_party
 
 
 @braun_wins
-on-arrival: president = "Braun"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent);
+on-arrival: president = "Braun"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_PSOE += 8*(1-dissent); old_middle_PSOE += 5*(1-dissent); new_middle_PSOE += 5*(1-dissent); rural_PSOE += 5*(1-dissent); unemployed_PSOE += 5*(1-dissent);
 
 Manuel Azaña of the AR has won the vote! This is a moment of celebration for our party, and his victory is able to bolster republican support.
