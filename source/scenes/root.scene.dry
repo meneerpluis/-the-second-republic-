@@ -233,10 +233,10 @@ Q.sapd_formed = 0;
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
-Q.workers_PSOE = 50;
-Q.workers_PCE = 4;
+Q.workers_PSOE = 45;
+Q.workers_PCE = 2;
 Q.workers_z = 8;
-Q.workers_PRRS = 8;
+Q.workers_PRRS = 15;
 Q.workers_dvp = 0;
 Q.workers_dnvp = 5;
 Q.workers_nsdap = 5;
@@ -247,8 +247,8 @@ Q.old_middle_PCE = 0;
 Q.old_middle_z = 5;
 Q.old_middle_PRRS= 10;
 Q.old_middle_dvp = 30;
-Q.old_middle_dnvp = 25;
-Q.old_middle_nsdap = 20;
+Q.old_middle_dnvp = 15;
+Q.old_middle_nsdap = 30;
 Q.old_middle_other = 5;
 
 Q.new_middle_PSOE = 10;
@@ -256,8 +256,8 @@ Q.new_middle_PCE = 0;
 Q.new_middle_z = 20;
 Q.new_middle_PRRS= 20;
 Q.new_middle_dvp = 25;
-Q.new_middle_dnvp = 10;
-Q.new_middle_nsdap = 5;
+Q.new_middle_dnvp = 5;
+Q.new_middle_nsdap = 10;
 Q.new_middle_other = 10;
 
 Q.rural_PSOE = 25;
@@ -270,21 +270,21 @@ Q.rural_nsdap = 15;
 Q.rural_other = 10;
 
 Q.unemployed_PSOE = 50;
-Q.unemployed_PCE = 5;
+Q.unemployed_PCE = 2;
 Q.unemployed_z = 5;
-Q.unemployed_PRRS = 0;
+Q.unemployed_PRRS = 3;
 Q.unemployed_dvp = 0;
-Q.unemployed_dnvp = 10;
-Q.unemployed_nsdap = 15;
+Q.unemployed_dnvp = 5;
+Q.unemployed_nsdap = 20;
 Q.unemployed_other = 15;
 
 Q.catholics_PSOE = 5;
 Q.catholics_PCE = 0;
 Q.catholics_z = 0;
-Q.catholics_PRRS = 0;
+Q.catholics_PRRS = 5;
 Q.catholics_dvp = 40;
-Q.catholics_dnvp = 20;
-Q.catholics_nsdap = 20;
+Q.catholics_dnvp = 5;
+Q.catholics_nsdap = 30;
 Q.catholics_other = 15;
 
 
