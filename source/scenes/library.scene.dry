@@ -232,6 +232,8 @@ Current relations: [+ nsdap_relation : relationships +]
 
 **Other left wing parties** - there is a multitude of small and regionalist parties, such as the Republican Left of Catalonia, the Basque Nationalist Party, the Galicianist Party, and others. These parties range anywhere from the centre-left to the far-left, but are united in their hate for the right. 
 
+Current relations: [+ PRRS_relation : relationships +]
+
 @paramilitaries
 on-arrival: {!
 Q.rb_strength = Math.round(Q.rb_strength);
