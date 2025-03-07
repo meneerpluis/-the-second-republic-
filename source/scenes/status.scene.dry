@@ -133,13 +133,13 @@ Anarchist Militants Militarization: [+ rfb_militancy : militancy +]
 
 Monarchist Militants Militarization: [+ sh_militancy : militancy +]
 
-{!<span class="tooltip-text" title="Fascists are falangists, corporatists and national syndicalists that are hostile to socialism and democracy .">Fascist Militants</span>!} Strength: [+ sa_strength_2 +] thousand
+{!<span class="tooltip-text" title="Fascists are falangists, corporatists and national syndicalists that are hostile to socialism and democracy.">Fascist Militants</span>!} Strength: [+ sa_strength_2 +] thousand
 
 Fascist Militants Militarization: [+ sa_militancy : militancy +]
 
-= Regional groups
+{!<span class="tooltip-text" title="Regionalists will feel more connected to their region then to spain and will fight to protect their autonomy.">Regionalist Militants</span>!} Strength: [+ regionalists_strength +] thousand.
 
-Regionalists: [+ regionalists_strength +] thousand members.
+Regional Militants Militarization [+ regionalists_militancy +]
 
 Regionalists loyalty: [+ regionalists_loyalty : loyalty +]
 
@@ -195,3 +195,7 @@ Unemployed: PSOE: [+ unemployed_PSOE_display +]%, AR: [+ unemployed_z_display +]
 Catholics: PSOE: [+ catholics_PSOE_display +]%, AR: [+ catholics_z_display +]%, PCE: [+ catholics_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ catholics_PRRS_display +]%, PRR: [+ catholics_dvp_display +]%; AN: [+ catholics_dnvp_display +]%, Others Right: [+ catholics_nsdap_display +]%, Others Left: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
 
 Support for the Kingdom: [+ pro_republic_disp +]%
+
+Support for Nationalism: [+ nationalism_disp +]%
+
+Support for Socialism: [+ socialism_disp +]%
