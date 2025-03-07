@@ -272,7 +272,7 @@ Militarization: [+ sa_militancy : militancy +]
 
 [+ regionalists_strength +] thousand
 
-[+ regionalists_militancy +] 
+[+ regionalists_militancy : militancy +] 
 
 Loyalty: [+ regionalists_loyalty : loyalty +]
 
