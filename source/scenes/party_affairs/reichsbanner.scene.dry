@@ -14,8 +14,8 @@ The *socialist_militants Schwarz-Rot-Gold* is a mass organization for the defens
 
 [? if workers_PSOE < 46 or workers_PSOE < workers_nsdap or workers_PSOE < workers_PCE : The socialist_militants is having a more difficult time recruiting, as the PSOE is no longer the dominant party among the workers. Many of its members have left. ?]
 
-- _militant: Fund more military-style training and equipment for the socialist_militants.
-- _militant_2: Use our existing resources to support more training for the socialist_militants.
+- @militant: Fund more military-style training and equipment for the socialist_militants.
+- @militant_2: Use our existing resources to support more training for the socialist_militants.
 - @same: Keep the socialist_militants as it is.
 - @cut_rb: Cut funding for the socialist_militants.
 - @women_rb
