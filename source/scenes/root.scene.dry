@@ -266,8 +266,8 @@ Q.rural_z = 1;
 Q.rural_PRRS= 2;
 Q.rural_dvp = 42;
 Q.rural_dnvp = 2;
-Q.rural_nsdap = 10;
-Q.rural_other = 18;
+Q.rural_nsdap = 13;
+Q.rural_other = 15;
 
 Q.unemployed_PSOE = 45;
 Q.unemployed_PCE = 2;
@@ -283,9 +283,9 @@ Q.catholics_PCE = 0;
 Q.catholics_z = 0;
 Q.catholics_PRRS = 5;
 Q.catholics_dvp = 40;
-Q.catholics_dnvp = 3;
+Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 25;
-Q.catholics_other = 22;
+Q.catholics_other = 20;
 
 
 // Current Reichstag composition
