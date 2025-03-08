@@ -320,7 +320,7 @@ Other: [+ other_r +]
 
 Popular Front (PSOE + AR + PRRS + PCE + Others left): [+ weimar_coalition +]
 
-Republican-Socialist (PSOE + PRR + AR + PRRS + PRR + Others left): [+ grand_coalition +]
+Republican-Socialist (PSOE + PRR + AR + PRRS + Others left): [+ grand_coalition +]
 
 Liberal Coalition (PRR + AR + PRRS): [+ bourgeois_coalition +]
 
