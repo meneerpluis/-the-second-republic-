@@ -84,11 +84,11 @@ Economic growth: [+ economic_growth_2 +]%
 
 {!<span class="tooltip-text" title="Communist Party of Spain">PCE</span>!}: [+ PCE_relation : relationships +]
 
-{!<span class="tooltip-text" title="Minor and regional left wing parties">Others Left</span>!}: [+ PRRS_relation : relationships +]
+{!<span class="tooltip-text" title="Minor and regional parties aligned with the left">Others Left</span>!}: [+ PRRS_relation : relationships +]
 
 {!<span class="tooltip-text" title="National Action">AN</span>!}: [+ dnvp_relation : relationships +]
 
-{!<span class="tooltip-text" title="Minor and regional right wing parties">Others Right</span>!}: [+ nsdap_relation : relationships +]
+{!<span class="tooltip-text" title="Minor and regional parties aligned with the right">Others Right</span>!}: [+ nsdap_relation : relationships +]
 
 = Internal Factions of the PSOE
 
