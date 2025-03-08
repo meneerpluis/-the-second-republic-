@@ -83,7 +83,7 @@ go-to: rm_main
 Severing has been removed as an advisor. The Reformist faction disapproves.
 
 @remove_braun
-title: Remove Braun
+title: Remove Prieto
 view-if: braun_advisor = 1
 tags: remove_advisor
 on-arrival: braun_advisor = 0; reformist_dissent += 5; n_advisors -= 1
@@ -92,13 +92,13 @@ go-to: rm_main
 Braun has been removed as an advisor. The Reformist faction disapproves.
 
 @remove_juchacz
-title: Remove Juchacz
+title: Remove Besteiro
 view-if: juchacz_advisor = 1
 tags: remove_advisor
 on-arrival: juchacz_advisor = 0; reformist_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
-Juchacz has been removed as an advisor. The Reformist faction disapproves.
+Besteiro has been removed as an advisor. The Reformist faction disapproves.
 
 @remove_pfulf
 title: Remove Pfülf
@@ -170,13 +170,13 @@ go-to: rm_main
 Sender has been removed as an advisor. The Leftist faction disapproves.
 
 @remove_rosenfeld
-title: Remove Rosenfeld
+title: Remove Largo Caballero
 view-if: rosenfeld_advisor = 1
 tags: remove_advisor
 on-arrival: rosenfeld_advisor = 0; left_dissent += 3; n_advisors -= 1
 go-to: rm_main
 
-Rosenfeld has been removed as an advisor. The Leftist faction disapproves.
+Largo Caballero has been removed as an advisor. The Leftist faction disapproves.
 
 @remove_seydewitz
 title: Remove Seydewitz
@@ -393,8 +393,8 @@ go-to: advisor_menu
 Carl Severing is now an advisor.
 
 @add_braun
-title: Otto Braun
-subtitle: Otto Braun is the Minister-President of Prussia, and one of the most recognizable and well-known Social Democratic leaders. {!<br><br>!}[? if difficulty < 0 : Actions - Prussian Bulwark, Negotiating with the Coalition ?]
+title: Indalecio Prieto
+subtitle: Indalecio Prieto is the Minister-President of Prussia, and one of the most recognizable and well-known Social Democratic leaders. {!<br><br>!}[? if difficulty < 0 : Actions - Prussian Bulwark, Negotiating with the Coalition ?]
 is-card: true
 card-image: img/portraits/BraunOtto.jpg
 tags: reformist_advisor
@@ -402,11 +402,11 @@ view-if: braun_advisor = 0 and n_advisors < 3
 on-arrival: braun_advisor = 1; n_advisors += 1; reformist_strength += 5
 go-to: advisor_menu
 
-Otto Braun is now an advisor.
+Indalecio Prieto is now an advisor.
 
 @add_juchacz
-title: Marie Juchacz
-subtitle: Marie Juchacz is the founder of Worker's Welfare, a mutual-aid organization. {!<br><br>!}[? if difficulty < 0 : Actions - Emergency Fundraising, Worker's Welfare, Organizing Women ?]
+title: Julian Besteiro
+subtitle: Julian Besteiro is the founder of Worker's Welfare, a mutual-aid organization. {!<br><br>!}[? if difficulty < 0 : Actions - Emergency Fundraising, Worker's Welfare, Organizing Women ?]
 is-card: true
 card-image: img/portraits/JuchaczMarie.jpg
 view-if: juchacz_advisor = 0 and n_advisors < 3
@@ -414,7 +414,7 @@ on-arrival: juchacz_advisor = 1; n_advisors += 1; reformist_strength += 5
 go-to: advisor_menu
 tags: reformist_advisor
 
-Marie Juchacz is now an advisor.
+Julian Besteiro is now an advisor.
 
 @add_pfulf
 title: Antonie Pfülf
@@ -457,8 +457,8 @@ tags: left_advisor
 Toni Sender is now an advisor.
 
 @add_rosenfeld
-title: Kurt Rosenfeld
-subtitle: Kurt Rosenfeld is a lawyer, anti-militarist activist, and Reichstag member. {!<br><br>!}[? if difficulty < 0 : Actions - Building the Left, Cooperation with the PCE, Against Toleration ?]
+title: Francisco Largo Caballero
+subtitle: Francisco Largo Caballero is a lawyer, anti-militarist activist, and Reichstag member. {!<br><br>!}[? if difficulty < 0 : Actions - Building the Left, Cooperation with the PCE, Against Toleration ?]
 is-card: true
 card-image: img/portraits/RosenfeldKurt.jpg
 view-if: rosenfeld_advisor = 0 and n_advisors < 3 and left_split = 0
@@ -466,7 +466,7 @@ on-arrival: rosenfeld_advisor = 1; n_advisors += 1; left_strength += 5
 go-to: advisor_menu
 tags: left_advisor
 
-Kurt Rosenfeld is now an advisor.
+Francisco Largo Caballero is now an advisor.
 
 @add_seydewitz
 title: Max Seydewitz
