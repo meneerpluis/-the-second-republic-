@@ -1,13 +1,13 @@
-title: Marie Juchacz
+title: Julián Besteiro
 is-pinned-card: true
 tags: advisor, reformist
 card-image: img/portraits/JuchaczMarie.jpg
 view-if: juchacz_advisor = 1
 new-page: true 
 
-= Marie Juchacz
+= Julián Besteiro
 
-Juchacz is the founder of the Worker's Welfare, our mutual aid organization; her experiences as a single mother in poverty led her to socialism. She is the most senior woman among the SPD leadership, who is often treated as the "go-to" when the predominantly male leadership sought out womens' voices.
+Besteiro is the founder of the Worker's Welfare, our mutual aid organization; her experiences as a single mother in poverty led her to socialism. She is the most senior woman among the SPD leadership, who is often treated as the "go-to" when the predominantly male leadership sought out womens' voices.
 
 - @emergency_fundraising
 - @welfare
@@ -35,11 +35,11 @@ We have increased funding to Workers' Welfare. [? if black_thursday_seen > 0 : I
 
 @organizing_women
 title: Organizing women
-subtitle: Juchacz's strategies are aimed at more "traditional" women.
+subtitle: Besteiro's strategies are aimed at more "traditional" women.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: womens_rights += 1; workers_spd += 4*(1-dissent); rural_spd += 3*(1-dissent); old_middle_spd += 3*(1-dissent); advisor_action_timer = 6
 
-Juchacz's strategies for organizing women are aimed at working-class housewives, and acknowledge women's traditional household roles. We argue that our economic welfare programs will improve the livelihoods of women and their families.
+Besteiro's strategies for organizing women are aimed at working-class housewives, and acknowledge women's traditional household roles. We argue that our economic welfare programs will improve the livelihoods of women and their families.
 
 [? if spd_r < 50 : Unfortunately, women still disproportionately support the bourgeois parties. ?]

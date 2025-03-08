@@ -1,13 +1,13 @@
-title: Kurt Rosenfeld
+title: Francisco Largo Caballero
 is-pinned-card: true
 tags: advisor, left
 card-image: img/portraits/RosenfeldKurt.jpg
 view-if: rosenfeld_advisor = 1
 new-page: true 
 
-= Kurt Rosenfeld
+= Francisco Largo Caballero
 
-Rosenfeld works as a lawyer in Berlin who defends left-wing individuals and causes. He favors cooperation with the KPD and a path of class struggle for the SPD.
+Largo Caballero works as a lawyer in Berlin who defends left-wing individuals and causes. He favors cooperation with the KPD and a path of class struggle for the SPD.
 
 - @building_the_left
 - @kpd_cooperation
@@ -30,7 +30,7 @@ unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +
 choose-if: advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; left_strength += 5; kpd_relation += 4*(1-dissent); reformist_dissent += 2; communist_coalition += 1 if kpd_cooperation_seen <= 1; kpd_cooperation_seen += 1
 
-Through his work, Rosenfeld has defended individual KPD members; this should make some connections possible.
+Through his work, Largo Caballero has defended individual KPD members; this should make some connections possible.
 
 @against_toleration
 title: Against toleration

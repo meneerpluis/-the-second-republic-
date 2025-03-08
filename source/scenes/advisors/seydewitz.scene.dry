@@ -1,13 +1,13 @@
-title: Max Seydewitz
+title: Luis Araquistáin
 is-pinned-card: true
 tags: advisor, left
 card-image: img/portraits/SeydewitzMax.jpg
 view-if: seydewitz_advisor = 1
 new-page: true 
 
-= Max Seydewitz
+= Luis Araquistáin
 
-Max Seydewitz is a former leader of the youth wing, current supporter of the left wing of the SPD, and advocates for class struggle.
+Luis Araquistáin is a former leader of the youth wing, current supporter of the left wing of the SPD, and advocates for class struggle.
 
 - @class_struggle
 - @socialist_youth
@@ -31,7 +31,7 @@ unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +
 choose-if: advisor_action_timer = 0 and resources > 0
 on-arrival: advisor_action_timer = 6; resources -= 1; left_strength += 5; left_dissent -= 3; rb_strength += 50; rb_militancy += 0.025; workers_spd += 2*(1-dissent); new_middle_spd += 1;
 
-Seydewitz supports building up the Socialist Youth, which attracts support to the Left and increases the militancy of the Reichsbanner.
+Araquistáin supports building up the Socialist Youth, which attracts support to the Left and increases the militancy of the Reichsbanner.
 
 @against_toleration
 title: Against toleration

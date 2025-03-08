@@ -1,13 +1,13 @@
-title: Fritz Baade
+title: Manuel Cordero
 is-pinned-card: true
 tags: advisor, reformist
 card-image: img/portraits/BaadeFritz.jpg
 view-if: baade_advisor = 1
 new-page: true 
 
-= Fritz Baade
+= Manuel Cordero
 
-Baade is one of the few agricultural experts in the SPD, and an unorthodox economist.
+Cordero is one of the few agricultural experts in the SPD, and an unorthodox economist.
 
 - @agriculture
 - @rural_campaign
@@ -16,7 +16,7 @@ Baade is one of the few agricultural experts in the SPD, and an unorthodox econo
 
 @agriculture
 title: Agricultural Policy
-subtitle: Baade is the Minister of Agriculture.
+subtitle: Cordero is the Minister of Agriculture.
 choose-if: advisor_action_timer <= 0 and spd_in_government and agriculture_minister_party == "SPD"
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The SPD is not in government. ?][? if agriculture_minister_party != "SPD": The SPD does not have the Agriculture Ministry. ?]
 on-arrival: advisor_action_timer = 6; agricultural_policy_timer -= 6; last_advisor_action = 1
