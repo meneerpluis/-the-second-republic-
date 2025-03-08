@@ -139,7 +139,7 @@ Fascist Militants Militarization: [+ sa_militancy : militancy +]
 
 {!<span class="tooltip-text" title="Regionalists will feel more connected to their region then to spain and will fight to protect their autonomy.">Regionalist Militants</span>!} Strength: [+ regionalists_strength +] thousand.
 
-Regional Militants Militarization [+ regionalists_militancy : militancy +]
+Regional Militants Militarization: [+ regionalists_militancy : militancy +]
 
 Regionalists loyalty: [+ regionalists_loyalty : loyalty +]
 
