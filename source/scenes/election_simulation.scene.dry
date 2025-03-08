@@ -274,11 +274,11 @@ if (Q.PCE_r >= Q.PSOE_r && Q.PCE_r >= Q.nsdap_r) {
 }
 
 // coalitions
-Q.weimar_coalition = Q.PSOE_r + Q.PRRS_r + Q.z_r - 3;
-Q.grand_coalition = Q.PSOE_r + Q.PRRS_r + Q.z_r + Q.dvp_r;
-Q.bourgeois_coalition = Q.PRRS_r + Q.z_r + Q.dvp_r + Q.other_r;
+Q.weimar_coalition = Q.PSOE_r + Q.PRRS_r + Q.z_r + Q.other_r + Q.PCE_r;
+Q.grand_coalition = Q.PSOE_r + Q.PRRS_r + Q.z_r + Q.dvp_r + Q.other_r;
+Q.bourgeois_coalition = Q.PRRS_r + Q.z_r + Q.dvp_r;
 Q.center_right_coalition = Q.z_r + Q.PRRS_r + Q.dvp_r + Q.other_r + Q.dnvp_r;
-Q.right_coalition = Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r;
+Q.right_coalition = Q.dvp_r + Q.nsdap_r + Q.dnvp_r;
 Q.far_right_coalition = Q.dnvp_r + Q.nsdap_r;
 Q.left_coalition = Q.PSOE_r + Q.PCE_r;
 // this is an absurd concept lol
@@ -288,7 +288,7 @@ Q.anti_democratic_coalition = Q.PCE_r + Q.nsdap_r;
 Q.neo_weimar_coalition = Q.PSOE_r + Q.PRRS_r + Q.z_r + Q.dvp_r + Q.other_r;
 !}
 
-The electoral system is larger multi-member constituencies. These new constituencies give bonus seats to the electoral list that achieves a majority or a plurality of the vote. Meaning that large multi-party coalitions are favored by this system.
+The electoral system consists of large multi-member constituencies. These new constituencies give bonus seats to the electoral list that achieves a majority or a plurality of the vote. Meaning that large multi-party coalitions are favored by this system.
  
 **Election results:**
 
@@ -318,11 +318,11 @@ Other: [+ other_r +]
 
 **Potential coalitions:**
 
-Popular Front (PSOE + AR + PRRS + PCE + Others): [+ weimar_coalition +]
+Popular Front (PSOE + AR + PRRS + PCE + Others left): [+ weimar_coalition +]
 
-Republican-Socialist (PSOE + PRR + AR + PRRS + PRR + Others): [+ grand_coalition +]
+Republican-Socialist (PSOE + PRR + AR + PRRS + PRR + Others left): [+ grand_coalition +]
 
-Liberal Coalition (PRR + AR + PRRS + Others): [+ bourgeois_coalition +]
+Liberal Coalition (PRR + AR + PRRS): [+ bourgeois_coalition +]
 
-Right-wing Coalition (PRR + CEDA + RE + Others): [+ right_coalition +]
+Right-wing Coalition (PRR + CEDA + RE + Others right): [+ right_coalition +]
 
