@@ -22,59 +22,68 @@ Q.parties = ['PSOE', 'PCE', 'z', 'PRRS', 'dvp', 'dnvp', 'nsdap', 'other'];
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
-Q.workers_PSOE = 65;
-Q.workers_PCE = 20;
-Q.workers_z = 5;
-Q.workers_PRRS = 0;
+Q.workers_PSOE = 42;
+Q.workers_PCE = 2;
+Q.workers_z = 8;
+Q.workers_PRRS = 15;
 Q.workers_dvp = 0;
-Q.workers_dnvp = 5;
-Q.workers_nsdap = 0;
-Q.workers_other = 10;
+Q.workers_dnvp = 1;
+Q.workers_nsdap = 5;
+Q.workers_other = 27;
 
-Q.old_middle_PSOE = 5;
+Q.old_middle_PSOE = 0;
 Q.old_middle_PCE = 0;
 Q.old_middle_z = 5;
-Q.old_middle_PRRS= 10;
-Q.old_middle_dvp = 25;
-Q.old_middle_dnvp = 25;
-Q.old_middle_nsdap = 10;
-Q.old_middle_other = 10;
+Q.old_middle_PRRS= 20;
+Q.old_middle_dvp = 30;
+Q.old_middle_dnvp = 0;
+Q.old_middle_nsdap = 25;
+Q.old_middle_other = 20;
 
 Q.new_middle_PSOE = 5;
 Q.new_middle_PCE = 0;
-Q.new_middle_z = 10;
-Q.new_middle_PRRS= 25;
+Q.new_middle_z = 20;
+Q.new_middle_PRRS= 35;
 Q.new_middle_dvp = 25;
-Q.new_middle_dnvp = 10;
-Q.new_middle_nsdap = 5;
+Q.new_middle_dnvp = 0;
+Q.new_middle_nsdap = 0;
 Q.new_middle_other = 15;
 
-Q.rural_PSOE = 10;
+Q.rural_PSOE = 25;
 Q.rural_PCE = 0;
-Q.rural_z = 5;
-Q.rural_PRRS= 5;
-Q.rural_dvp = 15;
-Q.rural_dnvp = 45;
-Q.rural_nsdap = 5;
-Q.rural_other = 10;
+Q.rural_z = 1;
+Q.rural_PRRS= 2;
+Q.rural_dvp = 42;
+Q.rural_dnvp = 2;
+Q.rural_nsdap = 13;
+Q.rural_other = 15;
 
-Q.unemployed_PSOE = 25;
-Q.unemployed_PCE = 55;
-Q.unemployed_z = 1;
-Q.unemployed_PRRS = 0;
+Q.unemployed_PSOE = 45;
+Q.unemployed_PCE = 2;
+Q.unemployed_z = 5;
+Q.unemployed_PRRS = 13;
 Q.unemployed_dvp = 0;
-Q.unemployed_dnvp = 5;
-Q.unemployed_nsdap = 15;
-Q.unemployed_other = 9;
+Q.unemployed_dnvp = 0;
+Q.unemployed_nsdap = 10;
+Q.unemployed_other = 25;
 
-Q.catholics_PSOE = 15;
-Q.catholics_PCE = 5;
-Q.catholics_z = 50;
-Q.catholics_PRRS = 0;
-Q.catholics_dvp = 5;
+Q.catholics_PSOE = 5;
+Q.catholics_PCE = 0;
+Q.catholics_z = 0;
+Q.catholics_PRRS = 5;
+Q.catholics_dvp = 40;
 Q.catholics_dnvp = 5;
-Q.catholics_nsdap = 0;
-Q.catholics_other = 10;
+Q.catholics_nsdap = 25;
+Q.catholics_other = 20;
+
+Q.PSOE_r = 25;
+Q.PCE_r = 1;
+Q.z_r = 6;
+Q.PRRS_r = 13;
+Q.dvp_r = 20;
+Q.dnvp_r = 2;
+Q.nsdap_r = 12;
+Q.other_r = 21;
 !}
 go-to: election_algorithm
 set-jump: post_election
@@ -149,14 +158,14 @@ Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 10;
 Q.catholics_other = 5;
 
-Q.PSOE_r = 25;
-Q.PCE_r = 10;
-Q.z_r = 15;
-Q.PRRS_r = 10;
-Q.dvp_r = 10;
-Q.dnvp_r = 14;
-Q.nsdap_r = 10;
-Q.other_r = 5;
+Q.PSOE_r = 13;
+Q.PCE_r = 2;
+Q.z_r = 2;
+Q.PRRS_r = 2;
+Q.dvp_r = 22;
+Q.dnvp_r = 25;
+Q.nsdap_r = 27;
+Q.other_r = 7;
 !}
 go-to: election_algorithm
 set-jump: post_election
@@ -231,14 +240,14 @@ Q.catholics_dnvp = 5;
 Q.catholics_nsdap = 10;
 Q.catholics_other = 5;
 
-Q.PSOE_r = 25;
-Q.PCE_r = 10;
-Q.z_r = 15;
-Q.PRRS_r = 10;
-Q.dvp_r = 10;
-Q.dnvp_r = 14;
-Q.nsdap_r = 10;
-Q.other_r = 5;
+Q.PSOE_r = 21;
+Q.PCE_r = 4;
+Q.z_r = 19;
+Q.PRRS_r = 8;
+Q.dvp_r = 7;
+Q.dnvp_r = 19;
+Q.nsdap_r = 13;
+Q.other_r = 9;
 !}
 go-to: election_algorithm
 set-jump: post_election
@@ -279,7 +288,7 @@ Q.anti_democratic_coalition = Q.PCE_r + Q.nsdap_r;
 Q.neo_weimar_coalition = Q.PSOE_r + Q.PRRS_r + Q.z_r + Q.dvp_r + Q.other_r;
 !}
 
-The electoral system is essentially proportional, with the proportion of Reichstag seats roughly equal to the proportion of votes.
+The electoral system is larger multi-member constituencies. These new constituencies give bonus seats to the electoral list that achieves a majority or a plurality of the vote. Meaning that large multi-party coalitions are favored by this system.
  
 **Election results:**
 
