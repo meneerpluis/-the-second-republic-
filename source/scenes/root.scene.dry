@@ -536,18 +536,18 @@ Q.march_on_berlin_timer = 0;
 
 
 // all the initial advisors are centrists.
-Q.wels_advisor = 1; // Juan Simeón Vidarte
-Q.muller_advisor = 1; // Andrés Saborit
+Q.wels_advisor = 0; // Juan Simeón Vidarte
+Q.muller_advisor = 0; // Andrés Saborit
 Q.muller_dead = 0;
 // okay I know Arthur Crispien was a leader irl but i couldn't find much interesting about him...
 Q.crispien_advisor = 0; // Arthur Crispien
-Q.hilferding_advisor = 1; // Matilde de la Torre
+Q.hilferding_advisor = 0; // Matilde de la Torre
 
 // left advisors
 Q.sender_advisor = 0; // Toni Sender
 Q.levi_advisor = 0; // Paul Levi
 Q.levi_dead = 0;
-Q.rosenfeld_advisor = 0; // Kurt Rosenfeld
+Q.rosenfeld_advisor = 1; // Kurt Rosenfeld
 Q.seydewitz_advisor = 0; // Max Seydewitz
 
 // centrist alternate advisors
@@ -556,8 +556,8 @@ Q.breitscheid_advisor = 0; // Rudolf Breitscheid
 
 // Reformist advisors
 Q.severing_advisor = 0; // Carl Severing
-Q.braun_advisor = 0; // Otto Braun
-Q.juchacz_advisor = 0; // Marie Juchacz
+Q.braun_advisor = 1; // Otto Braun
+Q.juchacz_advisor = 1; // Marie Juchacz
 Q.baade_advisor = 0; // Fritz Baade
 
 // Labor advisors
