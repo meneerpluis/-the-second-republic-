@@ -226,11 +226,11 @@ Current relations: [+ PCE_relation : relationships +]
 
 [? if sapd_formed: SAPD - Sozialistische Arbeiterpartei Deutschlands (Socialist Worker's Party of Germany) - a party recently formed in a split from the PSOE, the SAPD is essentially an agglomeration of various left-wing splinter groups between the PSOE and PCE. ?]
 
-**Other right wing parties** - There are numerous minor and regionalist right wing parties, such as the Regionalist League of Catalonia, the Spanish Agrarian Party and the Traditionalist Communion. These parties are right wing to far-right, but their goals are diverse, from fascism to monarchism or national conservatism. 
+**Other parties aligned with the right** - There are numerous minor and regionalist right wing parties, such as the Regionalist League of Catalonia, the Spanish Agrarian Party and the Traditionalist Communion. These parties are right wing to far-right, and some are conservative liberal parties. Their goals are diverse, from fascism to monarchism or national conservatism. 
 
 Current relations: [+ nsdap_relation : relationships +]
 
-**Other left wing parties** - there is a multitude of small and regionalist parties, such as the Republican Left of Catalonia, the Basque Nationalist Party, the Galicianist Party, and others. These parties range anywhere from the centre-left to the far-left, but are united in their hate for the right. 
+**Other parties aligned with the left** - there is a multitude of small and regionalist parties aligned with the left, such as the Republican Left of Catalonia, The Association of Service to the Republic, the Galicianist Party, and others. Most of these parties range anywhere from the centre-left to the far-left, but sometimes some liberal conservative parties also align with the left. 
 
 Current relations: [+ PRRS_relation : relationships +]
 
