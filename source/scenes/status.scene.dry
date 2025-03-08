@@ -129,7 +129,7 @@ Socialist Militants Militarization: [+ rb_militancy : militancy +]
 
 Anarchist Militants Militarization: [+ rfb_militancy : militancy +]
 
-{!<span class="tooltip-text" title="Monarchist are right-wing militants that either want the return of the Carlist line or the Bourbon line.">Monarchist Militants</span>!} Strength: [+ sh_strength_2 +] thousand
+{!<span class="tooltip-text" title="Monarchist are right-wing militants that either want the return of the Carlist line or the Alfonsist line.">Monarchist Militants</span>!} Strength: [+ sh_strength_2 +] thousand
 
 Monarchist Militants Militarization: [+ sh_militancy : militancy +]
 
