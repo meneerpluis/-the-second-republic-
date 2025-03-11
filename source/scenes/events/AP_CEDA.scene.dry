@@ -1,0 +1,17 @@
+title: AP Reformation
+subtitle: Popular Action is becoming the Spanish Confederation of Autonomous Rights.
+view-if: year == 1933 and month >= 3
+new-page: true
+max-visits: 1
+on-arrival: AN_name = "CEDA"; AP_CEDA_seen = 1; new_middle_dnvp = 3; old_middle_dnvp = 3; rural_dnvp = 3; catholics_dnvp = 10
+tags: event
+
+= AP Reformation
+
+Popular Action in colleboration with other right wing movements is becoming the Spanish Confederation of Autonomous Rights, the new party seeks to be a broad right wing party for conservatism and Catholicism in the upcoming election.
+  
+- @nothing: The right is organising.
+
+@nothing
+
+We have got to defeat them.
