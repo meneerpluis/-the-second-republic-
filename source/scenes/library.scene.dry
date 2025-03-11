@@ -203,20 +203,20 @@ go-to: menu
 
 **PSOE** - *Partido Socialista Obrero Español* (Spanish Socialist Workers' Party) - this is us. We are a socialist and democratic party of the working class. We are the heirs of the legacy of Marx and Engels, and our founder Pablo Iglesias. We are the foremost fighters of the working class. 
 
-**[+ AR_name +]** - *Acción Republicana* (Republican Action) - a centre-left liberal party, popular among the intelligensia and educated middle class, they are supportive of moderate social reform, secularization, decentralization and a republic.
+**[? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]** - *Acción Republicana* (Republican Action) - a centre-left liberal party, popular among the intelligensia and educated middle class, they are supportive of moderate social reform, secularization, decentralization and a republic.
 
 Current relations: [+ z_relation : relationships +]
 
 # TODO: replace this with the german state party after 1930
-**[+ PRRS_name +]** - *Partido Republicano Radical Socialista* (Radical Socialist Republican Party) - a left wing liberal party, supported by the progressive middle class and moderate working class people. Although not socialist they support radical reform. 
+**[? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]** - *Partido Republicano Radical Socialista* (Radical Socialist Republican Party) - a left wing liberal party, supported by the progressive middle class and moderate working class people. Although not socialist they support radical reform. 
 
 Current relations: [+ PRRS_relation : relationships +]
 
-**[+ PRR_name +]** - *Partido Republicano Radical* (Radical Republican Party) - a centre-right and moderate liberal party, supported by the middle classes and bourgeoisie. They support a republic, but don't support most economic reforms.
+**[? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]** - *Partido Republicano Radical* (Radical Republican Party) - a centre-right and moderate liberal party, supported by the middle classes and bourgeoisie. They support a republic, but don't support most economic reforms.
 
 Current relations: [+ dvp_relation : relationships +]
 
-**[+ AN_name +]** - *Acción Popular* (Popular Action) - a right-wing nationalist-conservative party, with authoritarian, corparatist, and deeply religious elements. It is supported by the former aristocracy, rural landowners, and conservative Catholics.
+**[? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]** - *Acción Popular* (Popular Action) - a right-wing nationalist-conservative party, with authoritarian, corparatist, and deeply religious elements. It is supported by the former aristocracy, rural landowners, and conservative Catholics.
 
 Current relations: [+ dnvp_relation : relationships +]
 
