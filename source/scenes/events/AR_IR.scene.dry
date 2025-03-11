@@ -3,7 +3,7 @@ subtitle: Republican Action is becoming the Republican Left.
 view-if: year == 1934 and month >= 4
 new-page: true
 max-visits: 1
-on-arrival: AR_name = "IR"; AR_IR_seen = 1; new_middle_z = 5; old_middle_z -= 3; rural_z -= 3; z_relation = 5 workers_z = 5 workers_PRRS -= 5
+on-arrival: AR_name = "IR"; AR_IR_seen = 1; new_middle_z = 5; old_middle_z -= 3; rural_z -= 3; z_relation = 5; workers_z = 5; workers_PRRS -= 5
 tags: event
 
 = AR Reformation
