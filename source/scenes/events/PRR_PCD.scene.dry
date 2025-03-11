@@ -1,0 +1,17 @@
+title: Downfall of the PRR
+subtitle: Party of the Democratic Centre is the new party representing the centre-right.
+view-if: year == 1933 and month >= 3
+new-page: true
+max-visits: 1
+on-arrival: PRR_name = "PCD"; PRR_PCD_seen = 1; new_middle_nsdap = 3; old_middle_nsdap = 3; new_middle_dnvp -= 3; old_middle_dnvp -= 3
+tags: event
+
+= Downfall of the PRR
+
+After numerous scandals and the increasing number of consessions to the right support for the PRR has collapsed. The now minor party has decided to run alongside CEDA and the right for the next ellection. The Party of the Democratic Centre has taken it's place as the centre-right moderate party, but the political centre has lost permanent support. 
+  
+- @nothing: Another bourgeoisie party working with the fascists.
+
+@nothing
+
+Us and our republican allies are the only ones that can stop the far-right.
