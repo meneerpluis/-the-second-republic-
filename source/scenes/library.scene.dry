@@ -372,26 +372,26 @@ data = data.concat([
     },
     {
         "id": "PRRS",
-        "legend": Q.PRRS_name,
-        "name": Q.PRRS_name,
+        "legend": "PRRS",
+        "name": "PRRS",
         "seats": Q.PRRS_r*5,
     },
     {
         "id": "z",
-        "legend": 'Q.AR_name',
-        "name": 'Q.AR_name',
+        "legend": "AR",
+        "name": "AR",
         "seats": Q.z_r*5,
     },
     {
         "id": "dvp",
-        "legend": 'Q.PRR_name',
-        "name": 'Q.PRR_name',
+        "legend": "PRR",
+        "name": "PRR",
         "seats": Q.dvp_r*5,
     },
     {
         "id": "dnvp",
-        "legend": 'Q.AN_name',
-        "name": 'Q.AN_name',
+        "legend": "AN",
+        "name": "AN",
         "seats": Q.dnvp_r*5,
     },
     {
@@ -420,7 +420,7 @@ if (d3 && window) {
     var lines = d3.linegraph(false, false,
             Q.parties,
             {'PSOE': '#EF1C27', 'PCE': '#AC0621', 'PRRS': '#9A0DBC', 'z': '#FF7028', 'dvp': '#A871A8', 'dnvp': '#303180', 'nsdap': '#000000', 'other': '#FFB232', 'sapd': '#c40000'},
-            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'Q.AR_name', 'dvp': 'Q.PCD_name', 'dnvp': 'Q.AN_name', 'nsdap': 'Other Right', 'other': 'Other Left', 'sapd': 'SAPD'});
+            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': Q.AR_name, 'dvp': Q.PCD_name, 'dnvp': Q.AN_name, 'nsdap': 'Other Right', 'other': 'Other Left', 'sapd': 'SAPD'});
     lines.width(width).height(400);
     //var svg = lines(Q.election_records);
     if (Q.election_records.length > 0) {
@@ -433,7 +433,7 @@ if (d3 && window) {
         var lines_2 = d3.linegraph(true, true,
             Q.parties,
             {'PSOE': '#EF1C27', 'PCE': '#AC0621', 'PRRS': '#9A0DBC', 'z': '#FF7028', 'dvp': '#A871A8', 'dnvp': '#303180', 'nsdap': '#000000', 'other': '#FFB232', 'sapd': '#c40000'},
-            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'Q.AR_name', 'dvp': 'Q.PRR_name', 'dnvp': 'Q.AN_name', 'nsdap': 'Other Right', 'other': 'Other left', 'sapd': 'SAPD'});
+            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': Q.AR_name, 'dvp': Q.PRR_name, 'dnvp': Q.AN_name, 'nsdap': 'Other Right', 'other': 'Other left', 'sapd': 'SAPD'});
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
