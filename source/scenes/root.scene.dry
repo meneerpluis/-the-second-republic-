@@ -323,6 +323,12 @@ Q.PRRS_name = "PRRS";
 // for changing the king to president
 Q.king_name = "King";
 
+// for changing the AN's name
+Q.AN_name = "AN";
+
+// for changing AR's name to IR
+Q.AR_name = "AR";
+
 // array of objects of the form {date: Date(), PSOE: 10, PCE: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
