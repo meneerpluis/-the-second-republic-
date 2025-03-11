@@ -203,20 +203,20 @@ go-to: menu
 
 **PSOE** - *Partido Socialista Obrero Español* (Spanish Socialist Workers' Party) - this is us. We are a socialist and democratic party of the working class. We are the heirs of the legacy of Marx and Engels, and our founder Pablo Iglesias. We are the foremost fighters of the working class. 
 
-**AR** - *Acción Republicana* (Republican Action) - a centre-left liberal party, popular among the intelligensia and educated middle class, they are supportive of moderate social reform, secularization, decentralization and a republic.
+**[+ AR_name +]** - *Acción Republicana* (Republican Action) - a centre-left liberal party, popular among the intelligensia and educated middle class, they are supportive of moderate social reform, secularization, decentralization and a republic.
 
 Current relations: [+ z_relation : relationships +]
 
 # TODO: replace this with the german state party after 1930
-**PRRS** - *Partido Republicano Radical Socialista* (Radical Socialist Republican Party) - a left wing liberal party, supported by the progressive middle class and moderate working class people. Although not socialist they support radical reform. 
+**[+ PRRS_name +]** - *Partido Republicano Radical Socialista* (Radical Socialist Republican Party) - a left wing liberal party, supported by the progressive middle class and moderate working class people. Although not socialist they support radical reform. 
 
 Current relations: [+ PRRS_relation : relationships +]
 
-**PRR** - *Partido Republicano Radical* (Radical Republican Party) - a centre-right and moderate liberal party, supported by the middle classes and bourgeoisie. They support a republic, but don't support most economic reforms.
+**[+ PRR_name +]** - *Partido Republicano Radical* (Radical Republican Party) - a centre-right and moderate liberal party, supported by the middle classes and bourgeoisie. They support a republic, but don't support most economic reforms.
 
 Current relations: [+ dvp_relation : relationships +]
 
-**AN** - *Acción Popular* (Popular Action) - a right-wing nationalist-conservative party, with authoritarian, corparatist, and deeply religious elements. It is supported by the former aristocracy, rural landowners, and conservative Catholics.
+**[+ AN_name +]** - *Acción Popular* (Popular Action) - a right-wing nationalist-conservative party, with authoritarian, corparatist, and deeply religious elements. It is supported by the former aristocracy, rural landowners, and conservative Catholics.
 
 Current relations: [+ dnvp_relation : relationships +]
 
@@ -372,26 +372,26 @@ data = data.concat([
     },
     {
         "id": "PRRS",
-        "legend": "PRRS",
-        "name": "PRRS",
+        "legend": "[+ PRRS_name +]",
+        "name": "[+ PRRS_name +]",
         "seats": Q.PRRS_r*5,
     },
     {
         "id": "z",
-        "legend": "AR",
-        "name": "AR",
+        "legend": "[+ AR_name +]",
+        "name": "[+ AR_name +]",
         "seats": Q.z_r*5,
     },
     {
         "id": "dvp",
-        "legend": "PRR",
-        "name": "PRR",
+        "legend": "[+ PRR_name +]",
+        "name": "[+ PRR_name +]",
         "seats": Q.dvp_r*5,
     },
     {
         "id": "dnvp",
-        "legend": "AN",
-        "name": "AN",
+        "legend": "[+ AN_name +]",
+        "name": "[+ AN_name +]",
         "seats": Q.dnvp_r*5,
     },
     {
@@ -420,7 +420,7 @@ if (d3 && window) {
     var lines = d3.linegraph(false, false,
             Q.parties,
             {'PSOE': '#EF1C27', 'PCE': '#AC0621', 'PRRS': '#9A0DBC', 'z': '#FF7028', 'dvp': '#A871A8', 'dnvp': '#303180', 'nsdap': '#000000', 'other': '#FFB232', 'sapd': '#c40000'},
-            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'AR', 'dvp': 'PRR', 'dnvp': 'AN', 'nsdap': 'Other Right', 'other': 'Other Left', 'sapd': 'SAPD'});
+            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'Q.AR_name', 'dvp': 'Q.PCD_name', 'dnvp': 'Q.AN_name', 'nsdap': 'Other Right', 'other': 'Other Left', 'sapd': 'SAPD'});
     lines.width(width).height(400);
     //var svg = lines(Q.election_records);
     if (Q.election_records.length > 0) {
@@ -433,7 +433,7 @@ if (d3 && window) {
         var lines_2 = d3.linegraph(true, true,
             Q.parties,
             {'PSOE': '#EF1C27', 'PCE': '#AC0621', 'PRRS': '#9A0DBC', 'z': '#FF7028', 'dvp': '#A871A8', 'dnvp': '#303180', 'nsdap': '#000000', 'other': '#FFB232', 'sapd': '#c40000'},
-            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'AR', 'dvp': 'PRR', 'dnvp': 'AN', 'nsdap': 'Other Right', 'other': 'Other left', 'sapd': 'SAPD'});
+            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'Q.AR_name', 'dvp': 'Q.PRR_name', 'dnvp': 'Q.AN_name', 'nsdap': 'Other Right', 'other': 'Other left', 'sapd': 'SAPD'});
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
