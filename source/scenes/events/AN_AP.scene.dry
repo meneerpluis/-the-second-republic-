@@ -1,5 +1,5 @@
 title: AN Rebranding
-subtitle: National Action is renaming Popular Action.
+subtitle: National Action is renaming to Popular Action.
 view-if: year == 1932 and month >= 2
 new-page: true
 max-visits: 1
