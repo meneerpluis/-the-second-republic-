@@ -372,26 +372,26 @@ data = data.concat([
     },
     {
         "id": "PRRS",
-        "legend": "[+ PRRS_name +]",
-        "name": "[+ PRRS_name +]",
+        "legend": Q.PRRS_name,
+        "name": Q.PRRS_name,
         "seats": Q.PRRS_r*5,
     },
     {
         "id": "z",
-        "legend": "[+ AR_name +]",
-        "name": "[+ AR_name +]",
+        "legend": Q.AR_name,
+        "name": Q.AR_name,
         "seats": Q.z_r*5,
     },
     {
         "id": "dvp",
-        "legend": "[+ PRR_name +]",
-        "name": "[+ PRR_name +]",
+        "legend": Q.PRR_name,
+        "name": Q.PRR_name,
         "seats": Q.dvp_r*5,
     },
     {
         "id": "dnvp",
-        "legend": "[+ AN_name +]",
-        "name": "[+ AN_name +]",
+        "legend": Q.AN_name,
+        "name": Q.AN_name,
         "seats": Q.dnvp_r*5,
     },
     {
@@ -433,7 +433,7 @@ if (d3 && window) {
         var lines_2 = d3.linegraph(true, true,
             Q.parties,
             {'PSOE': '#EF1C27', 'PCE': '#AC0621', 'PRRS': '#9A0DBC', 'z': '#FF7028', 'dvp': '#A871A8', 'dnvp': '#303180', 'nsdap': '#000000', 'other': '#FFB232', 'sapd': '#c40000'},
-            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': 'Q.AR_name', 'dvp': 'Q.PRR_name', 'dnvp': 'Q.AN_name', 'nsdap': 'Other Right', 'other': 'Other left', 'sapd': 'SAPD'});
+            {'PSOE': 'PSOE', 'PCE': 'PCE', 'PRRS': Q.PRRS_name, 'z': Q.AR_name, 'dvp': Q.PRR_name, 'dnvp': Q.AN_name, 'nsdap': 'Other Right', 'other': 'Other left', 'sapd': 'SAPD'});
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
