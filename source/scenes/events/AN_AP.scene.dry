@@ -1,0 +1,17 @@
+title: AN Rebranding
+subtitle: National Action is renaming Popular Action.
+view-if: year == 1932 and month >= 2
+new-page: true
+max-visits: 1
+on-arrival: AN_name = "AP"; AN_AP_seen = 1; new_middle_dnvp = 3; old_middle_dnvp = 3; rural_dnvp = 3; catholics_dnvp = 3
+tags: event
+
+= AN Rebranding
+
+Because of a new law that was passed, that banned the word national in party names, National Action is renaming itself to Popular Action. This persecution has earned them some support.
+  
+- @nothing: That didn't do anything.
+
+@nothing
+
+New name, same reactionary party.
