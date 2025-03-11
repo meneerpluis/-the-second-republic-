@@ -41,15 +41,15 @@ Constituent Cortes:
 {!<span class="tooltip-text" title="Spanish Socialist Workers' Party">PSOE</span>!}: [+ PSOE_r +]%
 [? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
 # 1928: 15, 1930: 15, 1932: 
-{!<span class="tooltip-text" title="Republican Action">AR</span>!}: [+ z_r +]%
+{!<span class="tooltip-text" title="Republican Action">!}[? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]{!</span>!}: [+ z_r +]%
 # 1928: 10, 1930: 13
 {!<span class="tooltip-text" title="Communist Party of Spain">PCE</span>!}: [+ PCE_r +]%
 # 1928: 5, 1930: 4 (as UR)
 {!<span class="tooltip-text" title="Radical Socialist Republican Party">!}[? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]{!</span>!}: [+ PRRS_r +]%
 # 1928: 9, 1930: 5
-{!<span class="tooltip-text" title="Radical Republican Party">PRR</span>!}: [+ dvp_r +]%
+{!<span class="tooltip-text" title="Radical Republican Party">!}[? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]{!</span>!}: [+ dvp_r +]%
 # 1928: 14, 1930: 7
-{!<span class="tooltip-text" title="National Action">AN</span>!}: [+ dnvp_r +]%
+{!<span class="tooltip-text" title="National Action">!}[? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]{!</span>!}: [+ dnvp_r +]%
 # 1928: 3, 1930: 18
 Others Right: [+ nsdap_r +]%
 # 1928: 9, 1930: 10
@@ -76,23 +76,23 @@ Economic growth: [+ economic_growth_2 +]%
 = Inter-party Relations
 
 
-{!<span class="tooltip-text" title="Republican Action">AR</span>!}: [+ z_relation : relationships +]
+{!<span class="tooltip-text" title="Republican Action">!}[? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]{!</span>!}: [+ z_relation : relationships +]
 
 {!<span class="tooltip-text" title="Radical Socialist Republican Party">!}[? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]{!</span>!}: [+ PRRS_relation : relationships +]
 
-{!<span class="tooltip-text" title="Radical Republican Party">PRR</span>!}: [+ dvp_relation : relationships +]
+{!<span class="tooltip-text" title="Radical Republican Party">!}[? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]{!</span>!}: [+ dvp_relation : relationships +]
 
 {!<span class="tooltip-text" title="Communist Party of Spain">PCE</span>!}: [+ PCE_relation : relationships +]
 
 {!<span class="tooltip-text" title="Minor and regional parties aligned with the left">Others Left</span>!}: [+ PRRS_relation : relationships +]
 
-{!<span class="tooltip-text" title="National Action">AN</span>!}: [+ dnvp_relation : relationships +]
+{!<span class="tooltip-text" title="National Action">!}[? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]{!</span>!}: [+ dnvp_relation : relationships +]
 
 {!<span class="tooltip-text" title="Minor and regional parties aligned with the right">Others Right</span>!}: [+ nsdap_relation : relationships +]
 
 = Internal Factions of the PSOE
 
-{!<span class="tooltip-text" title="The Revolutionaries are interested in radical, transformative policies.">Left</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
+{!<span class="tooltip-text" title="The Left is interested in radical, transformative policies.">Left</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
 
 {!<span class="tooltip-text" title="The Center is a faction of Center Marxists, between reform and revolution.">Center</span>!} strength: [+ center_strength : strength +], dissent: [+ center_dissent : dissent +]
 
@@ -166,7 +166,7 @@ PSOE: [+ PSOE_votes +]%
 
 [? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
 
-AR: [+ z_votes +]%
+[? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]: [+ z_votes +]%
 
 PCE: [+ PCE_votes +]%
 
@@ -174,25 +174,25 @@ PCE: [+ PCE_votes +]%
 
 Others Left: [+ other_votes +]%
 
-PRR: [+ dvp_votes +]%
+[? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]: [+ dvp_votes +]%
 
-AN: [+ dnvp_votes +]%
+[? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]: [+ dnvp_votes +]%
 
 Others Right: [+ nsdap_votes +]%
 
 **Detailed results for each demographic**
 
-Workers: PSOE: [+ workers_PSOE_display +]%, AR: [+ workers_z_display +]%, PCE: [+ workers_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ workers_PRRS_display +]%, PRR: [+ workers_dvp_display +]%; AN: [+ workers_dnvp_display +]%, Others Right: [+ workers_nsdap_display +]%, Others Left: [+ workers_other_display +]% [? if sapd_formed: SAPD: [+ workers_sapd_display +]% ?]
+Workers: PSOE: [+ workers_PSOE_display +]%, [? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]: [+ workers_z_display +]%, PCE: [+ workers_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ workers_PRRS_display +]%, [? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]: [+ workers_dvp_display +]%; [? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]: [+ workers_dnvp_display +]%, Others Right: [+ workers_nsdap_display +]%, Others Left: [+ workers_other_display +]% [? if sapd_formed: SAPD: [+ workers_sapd_display +]% ?]
 
-New Middle Class: PSOE: [+ new_middle_PSOE_display +]%, AR: [+ new_middle_z_display +]%, PCE: [+ new_middle_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ new_middle_PRRS_display +]%, PRR: [+ new_middle_dvp_display +]%; AN: [+ new_middle_dnvp_display +]%, Others Right: [+ new_middle_nsdap_display +]%, Others Left: [+ new_middle_other_display +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_display +]% ?]
+New Middle Class: PSOE: [+ new_middle_PSOE_display +]%, [? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]: [+ new_middle_z_display +]%, PCE: [+ new_middle_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ new_middle_PRRS_display +]%, [? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]: [+ new_middle_dvp_display +]%; [? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]: [+ new_middle_dnvp_display +]%, Others Right: [+ new_middle_nsdap_display +]%, Others Left: [+ new_middle_other_display +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_display +]% ?]
 
-Old Middle Class: PSOE: [+ old_middle_PSOE_display +]%, AR: [+ old_middle_z_display +]%, PCE: [+ old_middle_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ old_middle_PRRS_display +]%, PRR: [+ old_middle_dvp_display +]%; AN: [+ old_middle_dnvp_display +]%, Others Right: [+ old_middle_nsdap_display +]%, Others Left: [+ old_middle_other_display +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_display +]% ?]
+Old Middle Class: PSOE: [+ old_middle_PSOE_display +]%, [? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]: [+ old_middle_z_display +]%, PCE: [+ old_middle_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ old_middle_PRRS_display +]%, [? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]: [+ old_middle_dvp_display +]%; [? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]: [+ old_middle_dnvp_display +]%, Others Right: [+ old_middle_nsdap_display +]%, Others Left: [+ old_middle_other_display +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_display +]% ?]
 
-Rural: PSOE: [+ rural_PSOE_display +]%, AR: [+ rural_z_display +]%, PCE: [+ rural_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ rural_PRRS_display +]%, PRR: [+ rural_dvp_display +]%; AN: [+ rural_dnvp_display +]%, Others Right: [+ rural_nsdap_display +]%, Others Left: [+ rural_other_display +]% [? if sapd_formed: SAPD: [+ rural_sapd_display +]% ?]
+Rural: PSOE: [+ rural_PSOE_display +]%, [? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]: [+ rural_z_display +]%, PCE: [+ rural_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ rural_PRRS_display +]%, [? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]: [+ rural_dvp_display +]%; [? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]: [+ rural_dnvp_display +]%, Others Right: [+ rural_nsdap_display +]%, Others Left: [+ rural_other_display +]% [? if sapd_formed: SAPD: [+ rural_sapd_display +]% ?]
 
-Unemployed: PSOE: [+ unemployed_PSOE_display +]%, AR: [+ unemployed_z_display +]%, PCE: [+ unemployed_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ unemployed_PRRS_display +]%, PRR: [+ unemployed_dvp_display +]%; AN: [+ unemployed_dnvp_display +]%, Others Right: [+ unemployed_nsdap_display +]%, Others Left: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?]
+Unemployed: PSOE: [+ unemployed_PSOE_display +]%, [? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]: [+ unemployed_z_display +]%, PCE: [+ unemployed_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ unemployed_PRRS_display +]%, [? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]: [+ unemployed_dvp_display +]%; [? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]: [+ unemployed_dnvp_display +]%, Others Right: [+ unemployed_nsdap_display +]%, Others Left: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?]
 
-Catholics: PSOE: [+ catholics_PSOE_display +]%, AR: [+ catholics_z_display +]%, PCE: [+ catholics_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ catholics_PRRS_display +]%, PRR: [+ catholics_dvp_display +]%; AN: [+ catholics_dnvp_display +]%, Others Right: [+ catholics_nsdap_display +]%, Others Left: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
+Catholics: PSOE: [+ catholics_PSOE_display +]%, [? if not AR_name: AR?][? if AR_name != 0 : [+ AR_name +]?]: [+ catholics_z_display +]%, PCE: [+ catholics_PCE_display +]%, [? if not PRRS_name: PRRS?][? if PRRS_name != 0 : [+ PRRS_name +]?]: [+ catholics_PRRS_display +]%, [? if not PRR_name: PRR?][? if PRR_name != 0 : [+ PRR_name +]?]: [+ catholics_dvp_display +]%; [? if not AN_name: AN?][? if AN_name != 0 : [+ AN_name +]?]: [+ catholics_dnvp_display +]%, Others Right: [+ catholics_nsdap_display +]%, Others Left: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
 
 Support for the Kingdom: [+ pro_republic_disp +]%
 
