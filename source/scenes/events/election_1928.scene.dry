@@ -729,7 +729,6 @@ if (Q.pro_republic < 38) {
     Q.unemployed_nsdap += 5;   
 }
 !}
-view-if: no_confidence_votes > 50
 
 The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
 
