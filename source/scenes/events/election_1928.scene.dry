@@ -214,38 +214,32 @@ data = data.concat([
     },
     {
         "id": "z",
-        "legend": "Center",
-        "name": "Center",
-        "seats": Math.round((Q.z_r - 3)*5),
-    },
-    {
-        "id": "bvp",
-        "legend": "BVP",
-        "name": "BVP",
-        "seats": Math.round(3*5),
+        "legend": "Q.AR_name",
+        "name": "Q.AR_name",
+        "seats": Math.round((Q.z_r*5),
     },
     {
         "id": "dvp",
-        "legend": "DVP",
-        "name": "DVP",
+        "legend": "Q.PRR_name",
+        "name": "Q.PRR_name",
         "seats": Math.round(Q.dvp_r*5),
     },
     {
         "id": "other",
-        "legend": "Other",
-        "name": "Other",
+        "legend": "Others Left",
+        "name": "Others Left",
         "seats": Math.round(Q.other_r*5),
     },
     {
         "id": "dnvp",
-        "legend": "DNVP",
-        "name": "DNVP",
+        "legend": "Q.AN_name",
+        "name": "Q.AN_name",
         "seats": Math.round(Q.dnvp_r*5),
     },
     {
         "id": "nsdap",
-        "legend": "NSDAP",
-        "name": "NSDAP",
+        "legend": "Others Right",
+        "name": "Others Right",
         "seats": Math.round(Q.nsdap_r*5),
     },
 ]);
@@ -298,31 +292,24 @@ go-to: coalition_menu
 
 **Potential coalitions:**
 
-Popular Front (PSOE + Z + [+ PRRS_name +]): [+ weimar_coalition +]%
+Popular Front (PSOE + [+ AR_name +] + [+ PRRS_name +] + PCE + Others Left): [+ weimar_coalition +]%
 
-Republican-Socialist (PSOE + Z + BVP + [+ PRRS_name +] + DVP): [+ grand_coalition +]%
+Republican-Socialist (PSOE + [+ AR_name +] + [+ PRR_name +] + [+ PRRS_name +]): [+ grand_coalition +]%
 
-Liberal Coalition (Z + BVP + [+ PRRS_name +] + DVP + Others): [+ bourgeois_coalition +]%
+Liberal Coalition ([+ AR_name +] + [+ PRRS_name +] + [+ PRR_name +]): [+ bourgeois_coalition +]%
 
-Right-wing Coalition (Z + BVP + DVP + Others + DNVP): [+ right_coalition +]%
+Right-wing Coalition ([+ PRR_name +] + [+ AN_name +] + Others Right): [+ right_coalition +]%
 
-[? if nazi_urgency <= 1 and nsdap_r >= 15 : The rapid rise in NSDAP votes is extremely worrying. Many had believed that the party was moribound; now, some of us consider it to be the greatest threat to democracy in Germany. ?]
-
-[? if anti_democratic_coalition >= 50 : Together, the anti-democratic PCE, DNVP, and NSDAP have a majority in the Reichstag. A stable governing majority will be almost impossible. ?]
+[? if nazi_urgency <= 1 and dnvp_r >= 20 : The rapid rise in [+ AN_name +] votes is extremely worrying. Many had believed that the party was moribound; now, some of us consider it to be the greatest threat to democracy in Spain. ?]
 
 There are some potential coalition arrangements.
 
 @coalition_menu
 
 - @PSOE_majority
-- @weimar_coalition
-- @grand_coalition
-- @new_grand_coalition
 - @unity_government
-- @far_right_coalition
 - @no_majority
 - @brauns_dilemma
-- @left_coalition
 - @popular_front_coalition
 - @right_coalition
 
@@ -330,13 +317,13 @@ There are some potential coalition arrangements.
 
 
 @popular_front_coalition
-title: A new "Popular Front" coalition?
-subtitle: PSOE + PCE + Z + [+ PRRS_name +]  [? if sapd_formed: + SAPD ?]([+ popular_front_coalition +]%)
+title: A "Popular Front" coalition?
+subtitle: PSOE + PCE + [+ AR_name +] + [+ PRRS_name +] + Others Left [? if sapd_formed: + SAPD ?]([+ weimar_coalition +]%)
 unavailable-subtitle: PSOE + PCE + Z + [+ PRRS_name +] [? if sapd_formed: + SAPD ?]([+ popular_front_coalition +]%) - [? if ((PCE_relation < 65 and PCE_party_leader == "Thälmann") or (PCE_relation < 45 and PCE_party_leader == "Conciliators")): We do not have good enough relations with the PCE. ?][? if (z_relation < 45 and z_party_leader == "Joos") or (z_relation < 65 and z_party_leader != "Joos" and PCE_party_leader != "Conciliators") or (z_relation < 55 and z_party_leader != "Joos" and PCE_party_leader == "Conciliators"): We do not have good enough relations with the Center Party. ?][? if communist_coalition < 3 : The Communists are unwilling to compromise at all. ?]
 view-if: popular_front_coalition >= 50
 choose-if: (((PCE_relation >= 65 and PCE_party_leader == "Thälmann") or (PCE_relation >= 45 and PCE_party_leader == "Conciliators")) and ((z_relation >= 45 and z_party_leader == "Joos") or (z_relation >= 65 and z_party_leader != "Joos" and PCE_party_leader != "Conciliators") or (z_relation >= 55 and z_party_leader != "Joos" and PCE_party_leader == "Conciliators")) and PRRS_relation >= 50 and communist_coalition >= 3) or (z_party_leader == "Joos" and PCE_party_leader == "Conciliators" and z_relation >= 30 and PCE_relation >= 30)
 
-Could we really form a coalition that included both the Center and the Communists? It seems like an absurd concept, but given our good relationships with both sides, it is not an impossibility.
+Could we really form such a broad left wing bloc? It seems like an absurd concept, but given our good relationships everybody, it is not an impossibility.
 
 The far-right might attempt a coup, if such a coalition were formed.
 
@@ -405,129 +392,6 @@ on-arrival: PCE_relation = 80; reichswehr_loyalty += 0.25;
 In response to the PCE's entrance into the government, the right-wing immediately launches a coup attempt. Troops of the Stahlhelm and Nazi SA enter Berlin and immediately begin clashing with our supporters! Reactionary officers within the Reichswehr have taken their troops out of the barracks and joined them with the Stahlhelm to stop us from taking power.
 
 The Center manages to diffuse some of the hostility from the Reichswehr and the Stahlhelm, but fail to prevent the outbreak of fighting. We are forced to fight on the same side as the PCE, whether we want to or not.
-
-- @civil_war: A civil war, then.
-
-
-
-@far_right_coalition
-title: Far-right coalition
-subtitle: NSDAP + DNVP ([+ far_right_coalition +]%)
-view-if: far_right_coalition >= 50
-go-to: far_right_win if (year >= 1932 or nsdap_r >= 44) and president != "Braun"; far_right_fail if (year < 1932 and nsdap_r < 44) and president != "Braun"; far_right_braun if president == "Braun"
-priority: 2
-
-There are enough votes for the Nazis and the DNVP to form a coalition. [+ nsdap_leader +] has made his participation in government contingent on being appointed chancellor. It is up to President [+ president +] to decide.
-
-@far_right_win
-on-arrival: chancellor = nsdap_leader; chancellor_party = "NSDAP"
-
-[? if president == "Hindenburg" : President Hindenburg's camarilla ?][? if president == "Braun" : President Braun somehow ?] has decided that [+ nsdap_leader +] must be chancellor [? if president == "Hindenburg": , and the aging president accepts their recommendations. ?][? if president == "Braun" : because it is what the constitution would stipulate. ?]
-
-- @hitler_takes_power: What do we do now?
-
-
-@far_right_fail
-on-arrival: chancellor = "Schleicher"; chancellor_party = "I"; pro_republic -= 10; next_election_time = time+5; next_election_month = month + 5; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12;
-
-The reactionary establishment is still very skeptical of the Nazis, so instead, [+ president +] appoints Kurt von Schleicher, a former general, as chancellor, to try to "tame" the Nazis.
-
-Schleicher's government is deeply unpopular among all parties of the Reichstag. Despite his support for a coalition with the NSDAP, the Nazis want power all to themselves, without Schleicher.
-
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
-
-@far_right_braun
-on-arrival: coup_progress += 2
-
-President Braun faces a dilemma. Is it "democratic" to let democracy be destroyed, if the majority of voters have willed it so? Some, even on the left, suggest that the Nazis would not *truly* be as horrific as their platform suggests, and that giving them power would let them discredit themselves in the eyes of the public.
-
-Alternatively, Braun could use the emergency powers of the presidency. Article 48 has been used by Hindenburg to promulgate anti-democratic and anti-worker policies; can Article 48 be used for good as well as evil?
-
-- @emergency_braun: We will form an emergency government with Braun's support.
-- @new_elections: We will have new elections.
-- @far_right_win: Let the Nazis form their government.
-
-
-@left_coalition
-title: Is a United Left coalition possible?
-subtitle: PSOE + PCE [? if sapd_formed: + SAPD ?] ([+ left_coalition +]%)
-unavailable-subtitle: PSOE + PCE [? if sapd_formed: + SAPD ?] ([+ left_coalition +]%). [? if PCE_relation < 50 : We do not have adequate relations with the PCE. ?][? if communist_coalition < 3 : The Communists are too committed to their radical ways to partake in government. ?]
-view-if: left_coalition >= 50
-choose-if: (PCE_relation >= 50 or (PCE_party_leader == "Conciliators" and PCE_relation >= 40)) and communist_coalition >= 3
-
-There are enough votes for a PSOE + PCE coalition government, if such a thing were actually possible.
-
-The far-right might attempt a coup, if such a coalition were formed.
-
-- @left_coalition_impossible: This is impossible.
-- @left_coalition_possible: This could be possible.
-
-@left_coalition_impossible
-go-to: coalition_menu
-
-A far left coalition is impossible.
-
-
-@left_coalition_possible
-
-The PCE is still very reluctant to join a coalition, despite grassroots friendliness between our memberships. The Stalinist leadership is vehemently against such a thing. They demand the appointment of Ernst Thälmann as chancellor in exchange for a coalition. [? if president == "Hindenburg" : There is no chance whatsoever that President Hindenburg would approve of the appointment of a die-hard communist as chancellor. ?] Alternatively, if our relations with them are good enough, we could convince them to support the appointment of one of our centrist or left-leaning members as chancellor.
-
-- @thalmann_chancellor: Appoint Thälmann as chancellor.
-- @left_coalition_resources
-- @left_coalition_relations
-- @coalition_menu: Try a different governing arrangement.
-
-@thalmann_chancellor
-choose-if: president == "Braun" and reformist_strength + neorevisionist_strength < left_strength
-unavailable-subtitle: [? if president != "Braun": President [+ president +] would never allow such a thing. ?] [? if reformist_strength >= left_strength : Most in the parliamentary party would not support Thälmann as chancellor. ?]
-on-arrival: chancellor = "Thälmann"; chancellor_party = "PCE"; PCE_relation = 80; in_left_front = 1; PSOE_in_government = 1 
-
-With great reluctance, President [+ president +] appoints [+ chancellor +] as chancellor.
-
-Immediately, [+ chancellor +] goes to work building a "Soviet Germany": consolidating as much power as possible in the PCE, purging state institutions of anti-communists, and sending street fighters against the "enemies of the people".
-
-In response to [+ chancellor +] being appointed Chancellor, the right-wing forces launches almost immediately launch an attempted coup. Troops of the Stahlhelm and Nazi SA enter Berlin and immediately begin clashing with our supporters! Reactionary officers within the Reichswehr have taken their troops out of the barracks and joined them with the Stahlhelm to stop the PCE from taking power. We are forced to be on the same side as the PCE, whether we want to or not.
-
-- @civil_war
-
-
-@left_coalition_resources
-title: Use our resources to smooth things over.
-unavailable-subtitle: Required: 3 resources
-subtitle: -3 resources
-choose-if: resources >= 3
-on-arrival: resources -= 3
-go-to: left_coalition_success
-
-@left_coalition_relations
-title: Convince the PCE to accept democracy.
-unavailable-subtitle: Our relationships with the PCE are not good enough.
-choose-if: PCE_relation >= 60 or PCE_party_leader == "Conciliators"
-go-to: left_coalition_success
-
-
-@left_coalition_success
-on-arrival: PSOE_in_government = 1; in_left_front = 1; chancellor = "Breitscheid"; chancellor_party = "PSOE"; coup_progress += 3; capital_strike_progress += 2; in_popular_front = 0; in_grand_coalition = 0; in_weimar_coalition = 0; PCE_relation += 10
-go-to: left_coalition_civil_war if coup_progress >= 10; left_coalition_no_civil_war if coup_progress < 10
-achievement: einheitsfront
-
-Somehow, surprisingly, the left coalition is successfully formed, without appointing Thälmann as chancellor. The consensus choice for chancellor, accepted by the PSOE, PCE, and President [+ president +], is Rudolf Breitscheid, who belongs to the centrist faction of the PSOE, but was acceptable to the left due to his previous membership in the left-wing anti-war UPSOE.
-
-# just raise the coup limit, don't immediately go to civil war
-
-@left_coalition_no_civil_war
-on-arrival: PCE_goals_seen = 0; foreign_minister_party = "PSOE"; interior_minister_party = "PSOE"; justice_minister_party = "PSOE"; labor_minister_party = "PSOE"; reichswehr_minister_party = "PSOE"; economic_minister_party = "PSOE"; finance_minister_party = "PSOE"; agriculture_minister_party = "PSOE"; reichswehr_loyalty -= 0.05
-
-In response to the PCE's entrance into the government, the right-wing takes a "wait-and-see" approach for now. They expect that our government will be unstable and incompetent, and will collapse of its own accord, discrediting the left and eventually enabling the destruction of the Weimar Republic. Our task is to prove them wrong.
-
-The PCE has taken an abstentionist position with regards to ministries. They claim to be participating as the "loyal opposition" in the worker's government, supporting us from the outside while also running their own propaganda campaigns to turn workers to their side. They seem to expect that we would inevitably fail, and that our failure would benefit them. 
-
-Whatever their reasoning is, the PSOE has control over the ministries of government.
-
-@left_coalition_civil_war
-on-arrival: reichswehr_loyalty += 0.1
-
-In response to the PCE's entrance into the government, the right-wing immediately launches a coup attempt. Troops of the Stahlhelm and Nazi SA enter Berlin and begin clashing with our supporters. Reactionary officers within the Reichswehr have taken their troops out of the barracks and joined them with the Stahlhelm to stop us from taking power.
 
 - @civil_war: A civil war, then.
 
@@ -615,53 +479,13 @@ The third option is to have new elections.
 - @unity_government
 
 
-@new_grand_coalition
-title: A "New Grand Coalition" of all the constitutional parties?
-subtitle: PSOE + Z + BVP + [+ PRRS_name +] + DVP + Others ([+ neo_weimar_coalition +]%)
-view-if: neo_weimar_coalition >= 50 and grand_coalition < 50
-choose-if: z_relation >= 50 and dvp_relation >= 30
-unavailable-subtitle: PSOE + Z + BVP + [+ PRRS_name +] + DVP + Others ([+ neo_weimar_coalition +]%) - [? if z_relation < 50 : We do not have adequate relations with the Center Party. ?][? if dvp_relation < 30 : We do not have adequate relations with the DVP. ?]
-
-How do we convince vehemently anti-socialist parties to allow us to form a majority coalition? Our largely benevolent relations with the Center and DVP may allow us some leverage.
-
-- @use_resources
-- @toleration_bruning: No. We will tolerate a minority government.
-- @new_elections: No. We will have new elections.
-- @unity_government
-
-@use_resources
-title: Use our resources to smooth over the creation of a coalition.
-subtitle: -2 resources
-unavailable-subtitle: Not enough resources (need 2).
-choose-if: resources >= 2
-on-arrival: resources -= 2; PSOE_in_government = 1; in_grand_coalition = 1; left_dissent += 4;
-achievement: constitutional_coalition
-
-We transfer some of our campaign funds to our putative coalition partners. Some would call this corruption, but perhaps it is necessary to save our democracy.
-
-Now, we have a new grand coalition, a "Constitutional Coalition" of all the non-fascist and non-communist parties. Leftists in our party are somewhat skeptical of this arrangement. 
-
-
-Who should be chancellor?
-
-- @join_bruning: For better or for worse, it must be Heinrich Brüning of the Center.
-- @braun_chancellor_new: Otto Braun for Chancellor?
-
-@braun_chancellor_new
-subtitle: This will reduce our leverage in the ministries.
-view-if: not historical_mode or not PSOE_prussia
-on-arrival: leverage -= 10; chancellor = "Braun"; chancellor_party = "PSOE"
-go-to: ministries
-
-We have assembled a new coalition under Otto Braun.
-
 
 @unity_government
-title: The Center Party offers a "Government of National Unity" under Chancellor Joseph Wirth.
-subtitle: PSOE + Z + BVP + [+ PRRS_name +] + DVP + Others ([+ neo_weimar_coalition +]%)
-view-if: z_party_leader == "Joos" and neo_weimar_coalition >= 50 and weimar_coalition < 50 and z_relation >= 10
+title: A republican-socialist unity government.
+subtitle: PSOE + [+ AR_name +] + [+ PRR_name +] + [+ PRRS_name +] + Others Left ([+ grand_coalition +]%)
+view-if: grand_coalition >= 50 
 
-The Center Party leader, Joseph Joos, clearly sees the threat from the ascension of the anti-democratic extremist parties, and thus tries to negotiate a "Government of National Unity" to save the republic. This coalition would be led by Joseph Wirth, a left-leaning member of the Center Party and former chancellor, and would encompass all of the constitutional parties. Our role in this government might be limited, however.
+A joint government of all parties in favor of a republic in Spain. This broad coalition will make it possible to change the constitution.
 
 - @unity_government_2
 - @reject_unity_government: No, we will not accept this offer.
@@ -917,81 +741,6 @@ achievement: minderheitsregierung
 
 We have won the vote of no confidence, and are currently ruling under an PSOE minority government. Now our task is to fix the country.
 
-
-@weimar_coalition
-title: We can form a Weimar Coalition.
-subtitle: PSOE + Z + [+ PRRS_name +] [? if sapd_formed and PCE_relation >= 30 : + SAPD toleration ?] ([+ weimar_coalition +]%)
-view-if: weimar_coalition >= 50
-on-arrival: leverage += 5; leverage += 5 if z_party_leader == "Joos"; in_weimar_coalition = 1; PSOE_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = PRRS_name; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = PRRS_name; finance_minister_party = "Z"; agriculture_minister_party = "Z"; foreign_minister = "Wirth"; interior_minister = "Wirth"; justice_minister = "Koch-Weser"; labor_minister = "Stegerwald"; reichswehr_minister = "Groener"; economic_minister = "Dietrich"; finance_minister = "Köhler"; agriculture_minister = "Hermes";
-achievement: weimar_coalition
-
-We have enough votes to form a "Weimar Coalition" government consisting of the PSOE, Center (Z) and Democratic ([+ PRRS_name +]) parties! This has been our preferred governing coalition since 1919.
-
-Who should be the chancellor?
-
-- @muller
-- @braun
-- @breitscheid_coalition_chancellor
-- @wels
-- @z_chancellor
-- @z_chancellor_wirth
-
-@breitscheid_coalition_chancellor
-title: Rudolf Breitscheid for Chancellor
-subtitle: Breitscheid is viewed as friendlier towards the left of the PSOE.
-view-if: year >= 1930
-on-arrival: chancellor = "Breitscheid"; chancellor_party = "PSOE";
-go-to: ministries
-
-Rudolf Breitscheid has been appointed chancellor.
-
-
-@grand_coalition
-title: We can form a Grand Coalition.
-view-if: grand_coalition >= 50 and grand_coalition_failed == 0
-subtitle: PSOE + Z + BVP + [+ PRRS_name +] + DVP ([+ grand_coalition +]%)
-on-arrival: in_grand_coalition = 1; in_popular_front = 0; in_left_front = 0
-go-to: grand_coalition_PSOE_lead if (n_elections <= 1 and largest_party == "PSOE") or (largest_party == "PSOE" and PSOE_r >= 30) or president = "Braun"; grand_coalition_z_lead if president != "Braun" and ((n_elections > 1 and PSOE_r < 30) or (n_elections <= 1 and largest_party != "PSOE"))
-
-# TODO: if there are enough votes to form a grand coalition, who leads? Does the PSOE lead or does Brüning (Z) lead? In reality this depended on Hindenburg's will, basically, which in turn depended on what his camarilla supported.
-# In the first election, PSOE always leads. In subsequent elections, if PSOE_r >= 29 then PSOE leads, otherwise Z leads?
-
-@grand_coalition_z_lead
-go-to: grand_coalition_z_lead_2 if dvp_relation >= 30; grand_coalition_fail if dvp_relation < 30
-
-There are enough votes to form a majority coalition consisting of the PSOE, Center (Z), Bavarian People's (BVP), Democratic ([+ PRRS_name +]), and People's (DVP) parties. Given our rather weak electoral performance, [? if PSOE_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_PSOE = 1 : and the vote of no confidence against us, ?] President Hindenburg has asked the Center Party to take the lead role in forming a government.
-
-# TODO: if the PSOE participated in bringing down the previous government via a vote-of-no-confidence, or if we were essentially removed from government by our coalition partners, we should be more reluctant to participate in a new government.
-
-@grand_coalition_z_lead_2
-
-The Center chancellor is likely to be Heinrich Brüning of the Center Party [? if chancellor = "Brüning" : again. ?][? if chancellor != "Brüning": . ?] He is known for his conservatism and sympathy for monarchism, being on the right wing of the Center. [? if austerity >= 2 : Due to the government's austerity policies, many of our members are reluctant to participate in this coalition again. Some support a "toleration" arrangement in which we will provide outside support to prevent the far-right from either entering government or calling a successful no-confidence vote. Others support entering into pure opposition, and letting the right do what it wishes. ?]
-
-Brüning is not opposed to a coalition with us. Alternatively, we could enter a "toleration" agreement.
-
-- @join_bruning: Join the Brüning coalition.
-- @bruning_oppo: Join the opposition.
-- @toleration_bruning: We will "tolerate" a minority Brüning government.
-- @unity_government
-
-@join_bruning
-view-if: grand_coalition >= 50 or neo_weimar_coalition >= 50
-on-arrival: PSOE_in_government = 1; PSOE_toleration = 0; in_grand_coalition = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; leverage = 25 if leverage >= 25;
-go-to: ministries
-
-Heinrich Brüning welcomes us into his new cabinet. Now, we have our pick of ministries.
-
-@bruning_oppo
-on-arrival: PSOE_in_government = 0; PSOE_toleration = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; grand_coalition_failed = 1
-
-By refusing to join the grand coalition or tolerating it, we essentially throw the balance of government to the right wing. [? if right_coalition >= 50 : There are enough votes to form a right-wing coalition that includes the DNVP. However, the DNVP leader, Hugenberg, is opposed to a coalition with the "November criminals" of the Center Party. And of course, the NSDAP is not interested in coalition government. This means that there will not be enough votes to form a majority coalition. ?][? if right_coalition < 50 : There are not enough votes to form a right-wing coalition that includes the DNVP, and they are not interested in joining in a coalition with the "November criminals" of the Center Party, anyhow. And of course, the NSDAP is not interested in coalition government. This means that there is no route to a majority coalition. ?]
-
-If we do not at least "tolerate" the government, there will be new elections in a few months. In the meantime, the President and Chancellor may use the emergency powers granted by Article 48 of the constitution to essentially govern by decree. And it is not at all clear that we will do any better in the next election.
-
-- @join_bruning: Join the Brüning coalition.
-- @toleration_bruning: We will tolerate Brüning after all.
-- @brauns_dilemma
-- @new_elections: New elections, it is!
 
 
 @new_elections
