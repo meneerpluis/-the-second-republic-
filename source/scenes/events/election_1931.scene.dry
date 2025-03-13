@@ -1,0 +1,477 @@
+title: Constituent Cortes Elections
+new-page: true
+tags: event
+priority: -1
+view-if: (year = next_election_year and month >= next_election_month) or (year > next_election_year)
+on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48;
+set-jump: post_election_1931
+face-image: img/Rothe_Wahlen_1903.jpg
+
+= Elections, [+ month : month +] [+ year +]
+
+The Reichstag elections are to be held now.
+
+- @election_algorithm: May we do our best...
+
+@post_election_1931
+on-arrival: {!
+// set old results
+// election threshold constitutional reform
+// banning parties
+var new_party_sum = 0;
+for (var party of Q.parties) {
+    Q['old_' + party + '_r'] = Q[party + '_r'];
+    if (Q.constitutional_reform > 0) {
+        if (Q[party + '_votes'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || Q[party + '_banned']) {
+            Q[party + '_r'] = 0;
+        } else {
+            Q[party + '_r'] = Q[party + '_votes'];
+        }
+        new_party_sum += Q[party + '_r'];
+    } else {
+        Q[party + '_r'] = Q[party + '_votes'];
+    }
+    // if we use decimals, then we might want to truncate the numbers
+    if (Q.use_decimals) {
+        Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
+    }  else {
+            Q[party + '_r_disp'] = Q[party+'_r'];
+    }
+    Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
+    var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
+    Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
+}
+// calculate new party sum if electoral reform
+if (Q.electoral_threshold && Q.electoral_threshold > 0) {
+    for (var party of Q.parties) {
+        if (Q[party + '_r'] > 0) {
+            if (Q.use_decimals) {
+                Q[party + '_r'] = Math.round(Q[party + '_r']*1000/new_party_sum)/10;
+            } else {
+                Q[party + '_r'] = Math.round(Q[party + '_r']*100/new_party_sum);
+            }
+        }
+        if (Q.use_decimals) {
+            Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
+        } else {
+            Q[party + '_r_disp'] = Q[party+'_r'];
+        }
+        Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
+        var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
+        Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
+    }
+}
+
+// coalitions
+Q.popular_front_coalition = Q.PSOE_r + Q.PRRS_r + Q.z_r + Q.PCE_r + Q.other_r;
+Q.grand_coalition = Q.PSOE_r + Q.PRRS_r + Q.z_r + Q.dvp_r + Q.other_r;
+Q.bourgeois_coalition = Q.PRRS_r + Q.z_r + Q.dvp_r;
+Q.right_coalition = Q.dvp_r + Q.nsdap_r + Q.dnvp_r;
+
+Q.grand_coalition_failed = 0;
+// Reset government and ministers... Based on Spains 1933 govt
+Q.coalition_dissent = 0;
+Q.kpd_coalition_dissent = 0;
+Q.spd_in_government = 0;
+Q.in_grand_coalition = 0;
+Q.in_popular_front = 0;
+Q.spd_toleration = 0;
+Q.spd_caretaker = 0;
+Q.foreign_minister_party = 'PRR';
+Q.interior_minister_party = 'I';
+Q.justice_minister_party = 'PRR';
+Q.labor_minister_party = 'PRR';
+Q.reichswehr_minister_party = 'PRR';
+Q.economic_minister_party = 'PRR';
+Q.finance_minister_party = 'PRR';
+Q.agriculture_minister_party = Q.AN_name;
+
+var election_result = {'date': new Date(Q.year, Q.month - 1)};
+for (var party of Q.parties) {
+    election_result[party] = Q[party + '_r'];
+}
+Q.election_records.push(election_result);
+!}
+on-departure: nazi_urgency = 1 if (nazi_urgency == 0 and nsdap_r >= 15)
+on-display: {!
+data = [
+    {
+        "id": "PCE",
+        "legend": "PCE",
+        "name": "PCE",
+        "seats": Math.round(Q.PCE_r*5),
+    }
+];
+if (Q.sapd_formed && Q.sapd_r) {
+    data.push({
+            "id": "sapd",
+            "legend": "SAPD",
+            "name": "SAPD",
+            "seats": Math.round(Q.sapd_r*5),
+            });
+}
+data = data.concat([
+    {
+        "id": "PSOE",
+        "legend": "PSOE",
+        "name": "PSOE",
+        "seats": Math.round(Q.SPOE_r*5),
+    },
+    {
+        "id": "PRRS",
+        "legend": Q.PRRS_name,
+        "name": Q.PRRS_name,
+        "seats": Math.round(Q.PRRS_r*5),
+    },
+    {
+        "id": "z",
+        "legend": Q.AR_name,
+        "name": Q.AR_name,
+        "seats": Math.round(Q.z_R),
+    },
+    {
+        "id": "dvp",
+        "legend": Q.PRR_name,
+        "name": Q.PRR_name,
+        "seats": Math.round(Q.dvp_r*5),
+    },
+    {
+        "id": "other",
+        "legend": "Others Left",
+        "name": "Others Left",
+        "seats": Math.round(Q.other_r*5),
+    },
+    {
+        "id": "dnvp",
+        "legend": Q.AN_name,
+        "name": Q.AN_name,
+        "seats": Math.round(Q.dnvp_r*5),
+    },
+    {
+        "id": "nsdap",
+        "legend": "Others Right",
+        "name": "Others Right",
+        "seats": Math.round(Q.nsdap_r*5),
+    },
+]);
+
+if (window && d3) {
+    var width = 500; 
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50; 
+        height = width;
+        document.getElementById("reichstag").style.height = screenWidth/2 + "px";
+    } 
+
+    var parliament = d3.parliament();
+    parliament.width(width).height(height).innerRadiusCoef(0.4);
+    parliament.enter.fromCenter(true).smallToBig(true);
+    parliament.exit.toCenter(false).bigToSmall(true);
+    d3.select("#reichstag").datum(data).call(parliament);
+}
+!}
+go-to: coalition_menu
+
+= Election results
+
+{!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
+
+{!<table>!} 
+{!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **PSOE:** {!</td><td>!} **[+ PSOE_r +]%** {!</td><td>!} **[+ str_change_PSOE +]** {!</td></tr>!}
+
+[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} ?]
+
+{!<tr><td><div class="box" style='background-color:#8B0000'> </div> !}PCE: {!</td><td>!} [+ PCE_r +]% {!</td><td>!} [+ str_change_PCE +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} [+ PRRS_name +]: {!</td><td>!} [+ PRRS_r +]% {!</td><td>!} [+ str_change_PRRS +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#000'> </div> !} [+ AR_name +]: {!</td><td>!} [+ z_r +]% {!</td><td>!} [+ str_change_z +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#D5AC27'> </div> !} [+ PRR_name +]: {!</td><td>!} [+ dvp_r +]% {!</td><td>!} [+ str_change_dvp +] {!</td></tr>!}
+ 
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others Left: {!</td><td>!} [+ other_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#3f7bc1'> </div> !} [+ AN_name +]: {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#954B00'> </div> !} Others Right: {!</td><td>!} [+ nsdap_r +]% {!</td><td>!} [+ str_change_nsdap +] {!</td></tr>!}
+{!</table>!}
+
+**Potential coalitions:**
+
+Popular Front (PSOE + PCE + [+ AR_name +] + [+ PRRS_name +] + Others Left): [+ popular_front_coalition +]%
+
+Republican-Socialist Coalition (PSOE + [+ AR_name +] + [+ PRRS_name +] + [+ PRR_name +] + Others Left): [+ grand_coalition +]%
+
+Bourgeois Coalition ([+ AR_name +] + [+ PRRS_name +] + [+ PRR_name +]): [+ bourgeois_coalition +]%
+
+Right-wing Coalition ([+ PRR_name +] + [+ AN_name +] + Others Right): [+ right_coalition +]%
+
+There are some potential coalition arrangements.
+
+@coalition_menu
+
+- @PSOE_majority
+- @grand_coalition
+- @no_majority
+- @popular_front_coalition
+- @right_coalition
+
+
+@popular_front_coalition
+title: A new "Popular Front" coalition?
+subtitle: PSOE + PCE + [+ AR_name +] + [+ PRRS_name +] + Others Left  [? if sapd_formed: + SAPD ?]([+ popular_front_coalition +]%)
+unavailable-subtitle: PSOE + PCE + [+ AR_name +] + [+ PRRS_name +] + Others Left  [? if sapd_formed: + SAPD ?]([+ popular_front_coalition +]%) - [? if (PCE_relation < 65): We do not have good enough relations with the KPD. ?][? if (z_relation < 65): We do not have good enough relations with the Center Party. ?][? if communist_coalition < 3 : The Communists are unwilling to compromise at all. ?]
+view-if: popular_front_coalition >= 50
+choose-if: (PCE_relation >= 65 and z_relation >= 65 and PRRS_relation >= 50 and communist_coalition >= 3)
+
+Could we really form such a broad coalition to beat the right? It seems like an absurd concept, but given our good relationships with all left wing parties, it is not an impossibility.
+
+@popular_front_success: Form the Popular Front!
+on-arrival: PSOE_in_government = 1; in_popular_front = 1; chancellor = "Azaña"; chancellor_party = [+ AR_name +]; PCE_relation += 10; coup_progress += 2; in_grand_coalition = 0; coalition_dissent = 0;
+
+The coalition is successfully formed! We still need a chancellor; the only acceptable choice among the parties was Manuel Azaña of the [+ AR_name +].
+
+- @ministries: Now, we must select our ministries.
+
+
+@right_coalition
+title: Refuse to form a government, so that a right-wing coalition may be formed.
+subtitle: [+ PRR_name +] + [+ AN_name +] + Others Right ([+ right_coalition +]%)
+unavailable-subtitle: The [+ PRR_name +] is not interested in a coalition with the right wing.
+view-if: right_coalition >= 50
+choose-if: year > 1931
+
+There are enough votes for a right-wing coalition of the [+ PRR_name +], [+ AN_name +], and minor conservative parties. 
+
+- @right_coalition_sure: Yes, we will abdicate our responsibility for government formation, and let a right-wing coalition take power.
+- @grand_coalition: Actually, we wish to form a Republican-Socialist coalition after all.
+
+@right_coalition_sure
+subtitle: A right-wing government is formed.
+on-arrival: PSOE_in_government = 0; PSOE_toleration = 0; chancellor = "Lerroux "; chancellor_party = "PRR"; foreign_minister_party = "PRR"; interior_minister_party = "I"; justice_minister_party = "PRR"; labor_minister_party = "PRR"; reichswehr_minister_party = "PRR"; economic_minister_party = "PRR"; finance_minister_party = "PRR"; agriculture_minister_party = [+ AN_name +]; in_right_coalition = 1;
+
+
+@no_majority
+title: There is no clear governing majority.
+view-if: (grand_coalition < 50 or grand_coalition_failed == 1) and right_coalition < 50
+on-arrival: no_majority_elections += 1
+
+- @new_elections: We will have new elections.
+
+
+@PSOE_majority
+title: PSOE majority alone
+subtitle: PSOE: [+ spd_r +]%
+view-if: spd_r >= 50
+on-arrival: chancellor = "Empty"; chancellor_party = "PSOE"; PSOE_in_government = 1; in_PSOE_majority = 1; pro_republic += 5; foreign_minister_party = "PSOE"; foreign_minister = "Breitscheid"; interior_minister_party = "PSOE"; interior_minister = "Severing"; justice_minister_party = "PSOE"; justice_minister = "Radbruch"; labor_minister_party = "PSOE"; labor_minister = "Wissell"; reichswehr_minister_party = "PSOE"; reichswehr_minister = "Leber"; economic_minister_party = "PSOE"; economic_minister = "Schmidt"; finance_minister_party = "PSOE"; finance_minister = "Hilferding"; agriculture_minister_party = "PSOE"; agriculture_minister = "Baade"; reichswehr_loyalty -= 0.05; 
+achievement: majority_party
+
+Finally, the PSOE can govern alone! Our long campaign of electioneering has paid off. We do not need to worry about coalition government; anything is possible. 
+
+Who should be chancellor?
+
+- @besteiro_majority_chancellor: Julián Besteiro for Chancellor.
+- @caballero_majority_chancellor: Francisco Largo Caballero for Chancellor.
+- @prieto_majority_chancellor: Indalecio Prieto for Chancellor.
+  
+@besteiro_majority_chancellor
+on-arrival: chancellor = "Besteiro"
+
+Julián Besteiro has become chancellor of the SPD majority.
+
+@caballero_majority_chancellor
+on-arrival: chancellor = "Largo Caballero"
+
+Francisco Largo Caballero has become chancellor of the SPD majority.
+
+@prieto_majority_chancellor
+on-arrival: chancellor = "Prieto"
+
+Indalecio Prieto has become chancellor of the SPD majority.
+
+
+@grand_coalition
+title: We can form a Republican-Socialist coalition.
+view-if: grand_coalition >= 50 and grand_coalition_failed == 0
+subtitle: PSOE + [+ PRR_name +] + [+ AR_name +] + [+ PRRS_name +] + Others Left ([+ grand_coalition +]%)
+on-arrival: in_grand_coalition = 1; in_popular_front = 0;
+
+- @Niceto
+
+@Niceto 
+title: Niceto Alcalá-Zamora for Chancellor
+subtitle: Niceto Alcalá-Zamora, from the minor liberal-conservative party DLR, is the preferred candidate of the republican parties.
+on-arrival: spd_in_government = 1; chancellor = "Alcalá-Zamora"; chancellor_party = "DLR"; in_grand_coalition = 1 if in_weimar_coalition == 0
+go-to: ministries
+
+Alcalá-Zamora's appointment as chancellor is approved by all our potential allies.
+
+@ministries
+
+We can pick from any number of ministries. Controlling a ministry allows us to directly effect policy in that area. 
+- #mins_1928
+- #drop_mins_1928
+
+@labor
+title: Labor Ministry
+subtitle: Taking the Labor Ministry is expected of us.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 5
+view-if: labor_minister_party != "PSOE"
+on-arrival: leverage -= 5; labor_minister_party = "PSOE"; labor_minister = "Largo Caballero"
+go-to: ministries
+
+Francisco Largo Caballero of the PSOE has been appointed labor minister.
+
+@interior
+title: Interior Ministry
+subtitle: Taking the Interior Ministry is expected of us. The Interior Ministry controls domestic security.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 5
+view-if: interior_minister_party != "PSOE"
+on-arrival: leverage -= 5; interior_minister_party = "PSOE"; interior_minister = "Severing"
+go-to: ministries
+
+Carl Severing of the PSOE has been appointed Interior Minister.
+
+@finance
+title: Finance Ministry
+subtitle: The Finance Ministry controls the government budget and taxes.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 10 
+view-if: finance_minister_party != "PSOE"
+on-arrival: leverage -= 10; finance_minister_party = "PSOE"; finance_minister = "Prieto"
+go-to: ministries
+
+Indalecio Prieto of the PSOE has been appointed Finance Minister.
+
+@economic
+title: Economic Ministry
+subtitle: The Economic Ministry controls broader economic policy.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 10 
+view-if: economic_minister_party != "PSOE"
+on-arrival: leverage -= 10; economic_minister_party = "PSOE"; economic_minister = "Schmidt"
+go-to: ministries
+
+Robert Schmidt of the PSOE has been appointed Economic Minister.
+
+@justice
+title: Justice Ministry
+subtitle: The Justice Ministry controls the courts.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 10 
+view-if: justice_minister_party != "PSOE"
+on-arrival: leverage -= 10; justice_minister_party = "PSOE"; justice_minister = "De los Ríos"
+go-to: ministries
+
+Fernando de los Ríos of the PSOE has been appointed Justice Minister.
+
+@foreign
+title: Foreign Ministry
+subtitle: This is usually the domain of Gustav Stresemann of the PRR.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 10 
+view-if: foreign_minister_party != "PSOE"
+on-arrival: leverage -= 10; foreign_minister_party = "PSOE"; foreign_minister = "Breitscheid"
+go-to: ministries
+
+Rudolf Breitscheid of the PSOE has been appointed Foreign Minister.
+
+
+@agriculture
+title: Agricultural Ministry
+subtitle: This is not our usual domain.
+unavailable-subtitle: We do not have enough leverage.
+choose-if: leverage >= 10 
+view-if: agriculture_minister_party != "PSOE"
+on-arrival: leverage -= 10; agriculture_minister_party = "PSOE"; agriculture_minister = "Baade"
+go-to: ministries
+tags: mins_1928
+
+Fritz Baade of the PSOE has been appointed Agriculture Minister.
+
+@reichswehr
+title: War Ministry
+subtitle: The Ministry responsible for the armed forces is not typically our domain.
+unavailable-subtitle: We do not have enough leverage.
+tags: mins_1928
+choose-if: leverage >= 15 
+view-if: reichswehr_minister_party != "PSOE"
+on-arrival: leverage -= 15; reichswehr_minister_party = "PSOE"; reichswehr_minister = "Leber"
+go-to: ministries
+
+Julius Leber of the SPD has been appointed War Minister.
+
+
+
+@no_more
+title: No more ministries.
+subtitle: [? if leverage >= 10 : We still have some more leverage to gain ministries. ?][? if leverage < 10 : We do not have much leverage left. ?]
+tags: mins_1928
+
+This coalition arrangement is tolerable to all.
+
+@drop_labor
+title: Drop the Labor Ministry.
+view-if: labor_minister_party = "PSOE"
+on-arrival: labor_minister_party = PRRS_name; labor_minister = "Stegerwald"; leverage += 5;
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_interior
+title: Drop the Interior Ministry.
+view-if: interior_minister_party = "PSOE"
+on-arrival: interior_minister_party = "DLR"; interior_minister = "Maura"; leverage += 5;
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_finance
+title: Drop the Finance Ministry.
+view-if: finance_minister_party = "PSOE"
+on-arrival: finance_minister_party = AR_name; finance_minister = "Moldenhauer"; leverage += 10;
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_economic
+title: Drop the Economic Ministry.
+view-if: economic_minister_party = "PSOE"
+on-arrival: economic_minister_party = PRRS_name; economic_minister = "De Albornoz"; leverage += 10; 
+go-to: ministries
+
+@drop_justice
+title: Drop the Justice Ministry.
+view-if: justice_minister_party = "PSOE"
+on-arrival: justice_minister_party = AR_name; justice_minister = "Koch-Weser"; leverage += 10;
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_foreign
+title: Drop the Foreign Ministry.
+view-if: foreign_minister_party = "PSOE"
+on-arrival: foreign_minister_party = PRR_name; foreign_minister = "Lerroux "; 
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_agriculture
+title: Drop the Agriculture Ministry.
+view-if: agriculture_minister_party = "PSOE"
+on-arrival: agriculture_minister_party = PRRS_name; agriculture_minister = "Domingo"; 
+tags: drop_mins_1928
+go-to: ministries
+
+@drop_reichswehr
+title: Drop the War Ministry.
+view-if: reichswehr_minister_party = "PSOE"
+on-arrival: reichswehr_minister_party = AR_name; reichswehr_minister = "Azaña"; leverage += 15;
+tags: drop_mins_1928
+go-to: ministries
