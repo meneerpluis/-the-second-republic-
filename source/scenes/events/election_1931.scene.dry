@@ -247,7 +247,7 @@ There are enough votes for a right-wing coalition of the [+ PRR_name +], [+ AN_n
 
 @right_coalition_sure
 subtitle: A right-wing government is formed.
-on-arrival: PSOE_in_government = 0; PSOE_toleration = 0; chancellor = "Lerroux "; chancellor_party = "PRR"; foreign_minister_party = "PRR"; interior_minister_party = "I"; justice_minister_party = "PRR"; labor_minister_party = "PRR"; reichswehr_minister_party = "PRR"; economic_minister_party = "PRR"; finance_minister_party = "PRR"; agriculture_minister_party = [+ AN_name +]; in_right_coalition = 1;
+on-arrival: PSOE_in_government = 0; PSOE_toleration = 0; chancellor = "Lerroux"; chancellor_party = "PRR"; foreign_minister_party = "PRR"; interior_minister_party = "I"; justice_minister_party = "PRR"; labor_minister_party = "PRR"; reichswehr_minister_party = "PRR"; economic_minister_party = "PRR"; finance_minister_party = "PRR"; agriculture_minister_party = "CEDA"; in_right_coalition = 1;
 
 
 @no_majority
