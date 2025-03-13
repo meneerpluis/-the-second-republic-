@@ -471,3 +471,65 @@ view-if: reichswehr_minister_party = "PSOE"
 on-arrival: reichswehr_minister_party = AR_name; reichswehr_minister = "Azaña"; leverage += 15;
 tags: drop_mins_1928
 go-to: ministries
+
+
+@new_elections
+on-arrival: {!
+Q.next_election_month = Q.month + 3;
+Q.next_election_time = Q.time + 3;
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year = Q.year + 1;
+} else {
+    Q.next_election_year = Q.year;
+}
+if (Q.chancellor == "Brüning") {
+    Q.z_relation -= 5;
+    Q.dvp_relation -= 5;
+}
+Q.pro_republic -= 8;
+Q.workers_PSOE -= 5;
+Q.new_middle_PSOE -= 5;
+Q.old_middle_PSOE -= 5;
+Q.rural_PSOE -= 5;
+Q.catholics_PSOE -= 3;
+Q.new_middle_dvp -= 8;
+Q.old_middle_dvp -= 8;
+Q.new_middle_PRRS -= 5;
+Q.old_middle_PRRS -= 10;
+Q.rural_dnvp -= 5;
+Q.workers_nsdap += 5;
+Q.old_middle_nsdap += 6;
+Q.new_middle_nsdap += 6;
+Q.rural_nsdap += 6;
+Q.unemployed_nsdap += 5;
+// Thresholds are kind of arbitrary - adjusted because of negative economic effects on pro_republic
+if (Q.pro_republic < 45 && Q.pro_republic >= 36) {
+    Q.workers_PSOE -= 6;
+}
+if (Q.pro_republic < 36) {
+    // TODO: if you pursue a consistently revolutionary course, you might avoid this? But you might also cause a coalition between Hitler and the Center.
+    Q.z_relation -= 5;
+    Q.dvp_relation -= 5;
+    Q.workers_PSOE *= 0.85;
+    Q.unemployed_PSOE -= 2;
+    Q.new_middle_PSOE -= 5;
+    Q.old_middle_PSOE -= 5;
+    Q.rural_PSOE -= 5;
+    Q.catholics_PSOE -= 3;
+    Q.workers_nsdap += 8;
+    Q.old_middle_nsdap += 8;
+    Q.new_middle_nsdap += 8;
+    Q.rural_nsdap += 8;
+    Q.unemployed_nsdap += 8;   
+}
+if (Q.far_right_coalition >= 50) {
+    Q.sa_strength += 100;
+    Q.sh_strength += 100;
+    Q.coup_progress += 3;
+}
+!}
+
+There is no path to a workable Parliament majority or minority government. The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
+
+The people's faith in democracy is shaken by this ordeal. Of course, the right is exploiting the instability to claim that democracy is unworkable, and that Spain needs a strong leader.
